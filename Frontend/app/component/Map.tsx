@@ -85,9 +85,14 @@ function BaseMap() {
             >
 
 
-                <Marker longitude={-100} latitude={40} anchor="bottom">
+                <Marker longitude={-121.256694} latitude={46.687251} anchor="bottom">
                     {/* <img src="images/icons/location_icon.svg" alt="Location Icon" /> */}
                 </Marker>
+                <Marker longitude={-73.913974} latitude={18.357745} anchor="bottom">
+                    {/* <img src="images/icons/location_icon.svg" alt="Location Icon" /> */}
+                </Marker>
+
+
 
                 {selectedLayer && mapLayers[selectedLayer]}
 

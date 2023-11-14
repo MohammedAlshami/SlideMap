@@ -33,7 +33,7 @@ const LandslidePolygon = () => {
                     type: 'fill',
                     paint: {
                         'fill-color': '#F40606',
-                        'fill-opacity': .2
+                        'fill-opacity': 1
                     }       
                 }} />
             </Source>
