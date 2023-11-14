@@ -3,33 +3,24 @@ import Map, { NavigationControl, GeolocateControl, Layer, Source } from 'react-m
 
 const HeatMap = () => {
     const heatmapData = [
-        { "lng": 102.910006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.920006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.930006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.940006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.950006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.960006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.910006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.920006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.930006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.940006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.950006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.960006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.910006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.920006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.930006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.940006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.950006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.960006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.910006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.920006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.930006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.940006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.950006, "lat": 5.023782, "weight": .1 },
-        { "lng": 102.960006, "lat": 5.023782, "weight": .1 },
-        
-        // Add more data points as needed
+        { "lng": 102.910006, "lat": 5.023782, "weight": 0.1 },
+        { "lng": 102.920006, "lat": 5.023782, "weight": 0.1 },
+        { "lng": 102.930006, "lat": 5.023782, "weight": 0.1 },
+        { "lng": 102.940006, "lat": 5.023782, "weight": 0.1 },
+        { "lng": 102.950006, "lat": 5.023782, "weight": 0.1 },
+        { "lng": 102.960006, "lat": 5.023782, "weight": 0.1 },
+        { "lng": -73.935242, "lat": 40.730610, "weight": 0.5 }, // New York, USA
+        { "lng": 2.352222, "lat": 48.856614, "weight": 0.7 }, // Paris, France
+        { "lng": 139.691706, "lat": 35.689487, "weight": 0.4 }, // Tokyo, Japan
+        { "lng": -0.127647, "lat": 51.507321, "weight": 0.6 }, // London, UK
+        { "lng": 77.209021, "lat": 28.613939, "weight": 0.3 }, // New Delhi, India
+        { "lng": 114.0719, "lat": 51.0447, "weight": 0.2 }, // Astana, Kazakhstan
+        { "lng": -99.1332, "lat": 19.4326, "weight": 0.8 }, // Mexico City, Mexico
+        { "lng": 4.895168, "lat": 52.370216, "weight": 0.5 }, // Amsterdam, Netherlands
+        { "lng": 116.407396, "lat": 39.904200, "weight": 0.6 }, // Beijing, China
+        { "lng": 151.2093, "lat": -33.8688, "weight": 0.4 }, // Sydney, Australia
     ];
+
 
     const heatmapSource = {
         type: 'geojson',

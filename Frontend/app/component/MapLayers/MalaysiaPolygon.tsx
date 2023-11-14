@@ -25,8 +25,8 @@ const MalaysiaPolygon = () => {
                     id: 'data',
                     type: 'fill',
                     paint: {
-                        'fill-color': '#C3C83F',
-                        'fill-opacity': .2  
+                        'fill-color': '#C83F3F',
+                        'fill-opacity': .6 
                     }       
                 }} />
             </Source>
