@@ -16,27 +16,61 @@ function BaseMap() {
     console.log(selectedMapStyle)
 
     const mapStyles = {
-        satellite: `mapbox://styles/mapbox/satellite-streets-v12`,
+        satellite: `mapbox://styles/mapbox/satellite-v9`,
         dark: `mapbox://styles/mapbox/dark-v11`,
+        street: `mapbox://styles/mapbox/streets-v12`,
+        satellite_street: `mapbox://styles/mapbox/satellite-streets-v12`,
+        bubble: `mapbox://styles/mshami/cloxpg4d5010l01pbfnw0en4h`,
     };
 
-    const handleMapStyleChange = (event) => {
+    const handleMapStyleChange = (event: any) => {
         setSelectedMapStyle(event.target.value);
     };
 
+
+    const [selectedLayer, setSelectedLayer] = useState('');
+
+    const mapLayers = {
+        malaysiaPolygon: <MalaysiaPolygon />,
+        landslidePolygon: <LandslidePolygon />,
+        heatMap: <HeatMap />,
+    };
+
+    const handleLayerChange = (event: any) => {
+        setSelectedLayer(event.target.value);
+    };
     return (
         <>
-            <label className="p-2 text-white block mb-2 ">
-                <span className='text-black'>Select Map Style:</span>
-                <select
-                    value={selectedMapStyle}
-                    onChange={handleMapStyleChange}
-                    className="p-2 text-purple-500 rounded-md focus:outline-none "
-                >
-                    <option value="satellite">Satellite</option>
-                    <option value="dark">Dark</option>
-                </select>
-            </label>
+
+            <div className='w-screen'>
+                <label className="p-2 text-white block mb-2 absolute z-50 ">
+                    <select
+                        value={selectedMapStyle}
+                        onChange={handleMapStyleChange}
+                        className="p-2 text-purple-500 rounded-md focus:outline-none "
+                    >
+                        <option value="satellite">Satellite</option>
+                        <option value="dark">Dark</option>
+                        <option value="street">Street</option>
+                        <option value="satellite_street">Satellite Street</option>
+                        <option value="bubble">Bubble</option>
+
+                    </select>
+                </label>
+                <label className="p-2 text-white block mb-2 ml-44 absolute z-50 ">
+                    <select
+                        value={selectedLayer}
+                        onChange={handleLayerChange}
+                        className="p-2 text-purple-500 rounded-md focus:outline-none "
+                    >
+                        <option value="">Select Layer</option>
+                        <option value="malaysiaPolygon">Malaysia Polygon</option>
+                        <option value="landslidePolygon">Landslide Polygon</option>
+                        <option value="heatMap">Heat Map</option>
+                    </select>
+                </label>
+            </div>
+
 
             <Map
                 mapLib={import('mapbox-gl')}
@@ -49,15 +83,17 @@ function BaseMap() {
                 style={{ width: "100%", height: "100vh" }}
                 mapStyle={selectedMapStyle ? mapStyles[selectedMapStyle] : defaultMapStyle}
             >
-            
+
 
                 <Marker longitude={-100} latitude={40} anchor="bottom">
-                    <img src="images/icons/location_icon.svg" alt="Location Icon" />
+                    {/* <img src="images/icons/location_icon.svg" alt="Location Icon" /> */}
                 </Marker>
 
-                <HeatMap />
+                {selectedLayer && mapLayers[selectedLayer]}
+
+                {/* <HeatMap /> */}
                 {/* <LandslidePolygon /> */}
-                <MalaysiaPolygon />
+                {/* <MalaysiaPolygon /> */}
                 <NavigationControl />
                 <GeolocateControl />
             </Map>
