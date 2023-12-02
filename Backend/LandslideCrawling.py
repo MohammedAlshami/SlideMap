@@ -134,8 +134,9 @@ class LandslideCrawler:
 # from googlesearch.googlesearch import GoogleSearch
 # response = GoogleSearch().search("something")
 # print(response)
-# crawl = LandslideCrawler()
-# crawl.google_search("site:*.my landslide malaysia")
+crawl = LandslideCrawler()
+crawl.crawl("site:*.my landslide malaysia")
+# print(crawl.res)
 # url = "https://www.thestar.com.my/news/nation/2023/06/28/heavy-rain-causes-landslide-in-perak"
 # page_content = crawl.
 # # print(len(url))

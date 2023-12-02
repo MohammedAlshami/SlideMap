@@ -1,0 +1,321 @@
+{
+  "type": "FeatureCollection",
+  "query": [
+    "bali",
+    "batang",
+    "kali"
+  ],
+  "features": [
+    {
+      "id": "poi.188978570103",
+      "type": "Feature",
+      "place_type": [
+        "poi"
+      ],
+      "relevance": 0.775,
+      "properties": {
+        "foursquare": "4e830d0f30f8eeffd7c2645a",
+        "landmark": true,
+        "address": "Balai Polis Batang Kali",
+        "category": "police station, law enforcement",
+        "maki": "police"
+      },
+      "text": "Balai Polis Batang Kali",
+      "place_name": "Balai Polis Batang Kali, Balai Polis Batang Kali, Batang Kali, Selangor 44300, Malaysia",
+      "center": [
+        101.639463,
+        3.468319
+      ],
+      "geometry": {
+        "coordinates": [
+          101.639463,
+          3.468319
+        ],
+        "type": "Point"
+      },
+      "context": [
+        {
+          "id": "postcode.4066976",
+          "mapbox_id": "dXJuOm1ieHBsYzpQZzZn",
+          "text": "44300"
+        },
+        {
+          "id": "place.321696",
+          "mapbox_id": "dXJuOm1ieHBsYzpCT2ln",
+          "wikidata": "Q4868588",
+          "text": "Batang Kali"
+        },
+        {
+          "id": "region.99488",
+          "mapbox_id": "dXJuOm1ieHBsYzpBWVNn",
+          "wikidata": "Q189710",
+          "short_code": "MY-10",
+          "text": "Selangor"
+        },
+        {
+          "id": "country.8864",
+          "mapbox_id": "dXJuOm1ieHBsYzpJcUE",
+          "wikidata": "Q833",
+          "short_code": "my",
+          "text": "Malaysia"
+        }
+      ]
+    },
+    {
+      "id": "neighborhood.190114919",
+      "type": "Feature",
+      "place_type": [
+        "neighborhood"
+      ],
+      "relevance": 0.656667,
+      "properties": {
+        "mapbox_id": "dXJuOm1ieHBsYzpDMVRzWnc",
+        "wikidata": "Q12488786"
+      },
+      "text": "Kaliuntu",
+      "place_name": "Kaliuntu, 81116, Buleleng, Buleleng, Bali, Indonesia",
+      "bbox": [
+        115.07815,
+        -8.117781,
+        115.089687,
+        -8.107482
+      ],
+      "center": [
+        115.08278,
+        -8.112292
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.08278,
+          -8.112292
+        ]
+      },
+      "context": [
+        {
+          "id": "postcode.55897703",
+          "mapbox_id": "dXJuOm1ieHBsYzpBMVR1Wnc",
+          "text": "81116"
+        },
+        {
+          "id": "locality.7858791",
+          "mapbox_id": "dXJuOm1ieHBsYzpkK3Bu",
+          "wikidata": "Q4200388",
+          "text": "Buleleng"
+        },
+        {
+          "id": "place.723047",
+          "mapbox_id": "dXJuOm1ieHBsYzpDd2hu",
+          "wikidata": "Q11495",
+          "text": "Buleleng"
+        },
+        {
+          "id": "region.91239",
+          "mapbox_id": "dXJuOm1ieHBsYzpBV1Ju",
+          "wikidata": "Q3125978",
+          "short_code": "ID-BA",
+          "text": "Bali"
+        },
+        {
+          "id": "country.8807",
+          "mapbox_id": "dXJuOm1ieHBsYzpJbWM",
+          "wikidata": "Q252",
+          "short_code": "id",
+          "text": "Indonesia"
+        }
+      ]
+    },
+    {
+      "id": "neighborhood.649653351",
+      "type": "Feature",
+      "place_type": [
+        "neighborhood"
+      ],
+      "relevance": 0.656667,
+      "properties": {
+        "mapbox_id": "dXJuOm1ieHBsYzpKcmpzWnc"
+      },
+      "text": "Kalibukbuk",
+      "place_name": "Kalibukbuk, 81119, Buleleng, Buleleng, Bali, Indonesia",
+      "bbox": [
+        115.02358,
+        -8.170241,
+        115.047914,
+        -8.148752
+      ],
+      "center": [
+        115.042284,
+        -8.163974
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.042284,
+          -8.163974
+        ]
+      },
+      "context": [
+        {
+          "id": "postcode.80375399",
+          "mapbox_id": "dXJuOm1ieHBsYzpCTXB1Wnc",
+          "text": "81119"
+        },
+        {
+          "id": "locality.7858791",
+          "mapbox_id": "dXJuOm1ieHBsYzpkK3Bu",
+          "wikidata": "Q4200388",
+          "text": "Buleleng"
+        },
+        {
+          "id": "place.723047",
+          "mapbox_id": "dXJuOm1ieHBsYzpDd2hu",
+          "wikidata": "Q11495",
+          "text": "Buleleng"
+        },
+        {
+          "id": "region.91239",
+          "mapbox_id": "dXJuOm1ieHBsYzpBV1Ju",
+          "wikidata": "Q3125978",
+          "short_code": "ID-BA",
+          "text": "Bali"
+        },
+        {
+          "id": "country.8807",
+          "mapbox_id": "dXJuOm1ieHBsYzpJbWM",
+          "wikidata": "Q252",
+          "short_code": "id",
+          "text": "Indonesia"
+        }
+      ]
+    },
+    {
+      "id": "neighborhood.186117223",
+      "type": "Feature",
+      "place_type": [
+        "neighborhood"
+      ],
+      "relevance": 0.656667,
+      "properties": {
+        "mapbox_id": "dXJuOm1ieHBsYzpDeGZzWnc",
+        "wikidata": "Q14633308"
+      },
+      "text": "Kaliakah",
+      "place_name": "Kaliakah, 82252, Negara, Jembrana, Bali, Indonesia",
+      "bbox": [
+        114.548052,
+        -8.354237,
+        114.615789,
+        -8.306625
+      ],
+      "center": [
+        114.582905,
+        -8.335598
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          114.582905,
+          -8.335598
+        ]
+      },
+      "context": [
+        {
+          "id": "postcode.56208999",
+          "mapbox_id": "dXJuOm1ieHBsYzpBMW11Wnc",
+          "text": "82252"
+        },
+        {
+          "id": "locality.30526055",
+          "mapbox_id": "dXJuOm1ieHBsYzpBZEhLWnc",
+          "wikidata": "Q2657710",
+          "text": "Negara"
+        },
+        {
+          "id": "place.1247335",
+          "mapbox_id": "dXJuOm1ieHBsYzpFd2hu",
+          "wikidata": "Q11499",
+          "text": "Jembrana"
+        },
+        {
+          "id": "region.91239",
+          "mapbox_id": "dXJuOm1ieHBsYzpBV1Ju",
+          "wikidata": "Q3125978",
+          "short_code": "ID-BA",
+          "text": "Bali"
+        },
+        {
+          "id": "country.8807",
+          "mapbox_id": "dXJuOm1ieHBsYzpJbWM",
+          "wikidata": "Q252",
+          "short_code": "id",
+          "text": "Indonesia"
+        }
+      ]
+    },
+    {
+      "id": "neighborhood.186412135",
+      "type": "Feature",
+      "place_type": [
+        "neighborhood"
+      ],
+      "relevance": 0.656667,
+      "properties": {
+        "mapbox_id": "dXJuOm1ieHBsYzpDeHhzWnc",
+        "wikidata": "Q12488654"
+      },
+      "text": "Kaliasem",
+      "place_name": "Kaliasem, 81152, Banjar, Buleleng, Bali, Indonesia",
+      "bbox": [
+        115.009314,
+        -8.190859,
+        115.03612,
+        -8.161768
+      ],
+      "center": [
+        115.02482,
+        -8.170993
+      ],
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          115.02482,
+          -8.170993
+        ]
+      },
+      "context": [
+        {
+          "id": "postcode.55938663",
+          "mapbox_id": "dXJuOm1ieHBsYzpBMVdPWnc",
+          "text": "81152"
+        },
+        {
+          "id": "locality.3451495",
+          "mapbox_id": "dXJuOm1ieHBsYzpOS3Bu",
+          "wikidata": "Q4250886",
+          "text": "Banjar"
+        },
+        {
+          "id": "place.723047",
+          "mapbox_id": "dXJuOm1ieHBsYzpDd2hu",
+          "wikidata": "Q11495",
+          "text": "Buleleng"
+        },
+        {
+          "id": "region.91239",
+          "mapbox_id": "dXJuOm1ieHBsYzpBV1Ju",
+          "wikidata": "Q3125978",
+          "short_code": "ID-BA",
+          "text": "Bali"
+        },
+        {
+          "id": "country.8807",
+          "mapbox_id": "dXJuOm1ieHBsYzpJbWM",
+          "wikidata": "Q252",
+          "short_code": "id",
+          "text": "Indonesia"
+        }
+      ]
+    }
+  ],
+  "attribution": "NOTICE: \u00a9 2023 Mapbox and its suppliers. All rights reserved. Use of this data is subject to the Mapbox Terms of Service (https://www.mapbox.com/about/maps/). This response and the information it contains may not be retained. POI(s) provided by Foursquare."
+}
