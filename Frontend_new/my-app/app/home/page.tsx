@@ -1,8 +1,9 @@
 'use client';
+import Navbar from '@/components/navbar';
 import Image from 'next/image'
 import { Accordion, } from 'react-daisyui'
 
-import Navbar from '@/components/navbar';
+import { FAQ } from './FAQ';
 export default function Home() {
   const args = {
     // Add your desired props here
@@ -12,17 +13,16 @@ export default function Home() {
 
   return (
     <>
-
-      <div className='h-screen flex flex-col justify-between'>
-
       <Navbar></Navbar>
+
+      <div className='h-screen flex flex-col justify-between gap-44'>
 
 
         <section>
           <div className="dark:bg-violet-400">
             <div className="container flex flex-col items-center px-4 py-16 pb-24 mx-auto text-center lg:pb-56 md:py-32 md:px-10 lg:px-32 dark:text-gray-900">
-              <h1 className="text-5xl font-bold leadi sm:text-6xl xl:max-w-3xl dark:text-gray-900">Landslide Detection Like No Before</h1>
-              <p className="mt-6 mb-8 text-lg sm:mb-12 xl:max-w-3xl dark:text-gray-900">Cupiditate minima voluptate temporibus quia? Architecto beatae esse ab amet vero eaque explicabo!</p>
+              <h1 className="text-5xl font-bold leadi sm:text-6xl xl:max-w-3xl dark:text-gray-900">Landslide Mapping Like No Before</h1>
+              <p className="mt-6 mb-8 text-lg sm:mb-12 xl:max-w-3xl dark:text-gray-900">Find out more about landslides with amazing accuracy. Learn about the fascinating world of landslides!</p>
               <div className="flex flex-wrap justify-center">
                 <button type="button" className="px-8 py-3 m-2 text-lg font-semibold rounded dark:bg-gray-800 dark:text-gray-50">Get started</button>
                 <button type="button" className="px-8 py-3 m-2 text-lg border rounded dark:border-gray-700 dark:text-gray-900">Learn more</button>
@@ -43,119 +43,239 @@ export default function Home() {
           </div>
         </section>
 
-      <section>
-        <Statistic></Statistic>
-      </section>
 
-        <section>
-          <div className="hero min-h-screen ">
-            <div className="hero-content flex-col lg:flex-row-reverse">
-              <img src="https://source.unsplash.com/random/480x320" className="max-w-sm rounded-lg shadow-2xl ml-44" />
+
+
+        <section className="dark:bg-gray-800 dark:text-gray-100">
+          <div className="container max-w-xl p-6 py-12 mx-auto space-y-48 lg:px-8 lg:max-w-7xl">
+            <div>
+              <h2 className="text-3xl font-bold tracki text-center sm:text-5xl dark:text-gray-50">Aliquip definiebas ad est</h2>
+              <p className="max-w-3xl mx-auto mt-4 text-xl text-center dark:text-gray-400">Quando cetero his ne, eum admodum sapientem ut.</p>
+            </div>
+
+            <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+              <div className="md:grid md:grid-cols-2 md:items-center md:gap-12 xl:gap-32">
+                <div>
+                  <img className="rounded-xl" src="https://images.unsplash.com/photo-1648737963503-1a26da876aca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=900&h=900&q=80" alt="Image Description" />
+                </div>
+
+                <div className="mt-5 sm:mt-10 lg:mt-0">
+                  <div className="space-y-6 sm:space-y-8">
+                    <div className="space-y-2 md:space-y-4">
+                      <h2 className="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-gray-200">
+                        We tackle the challenges start-ups face
+                      </h2>
+                      <p className="text-gray-500">
+                        Besides working with start-up enterprises as a partner for digitalization, we have built enterprise products for common pain points that we have encountered in various products and projects.
+                      </p>
+                    </div>
+
+                    <ul role="list" className="space-y-2 sm:space-y-4">
+                      <li className="flex space-x-3">
+                        <span className="mt-0.5 h-5 w-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-800/30 dark:text-blue-500">
+                          <svg className="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                        </span>
+
+                        <span className="text-sm sm:text-base text-gray-500">
+                          <span className="font-bold">Easy & fast</span> designing
+                        </span>
+                      </li>
+
+                      <li className="flex space-x-3">
+                        <span className="mt-0.5 h-5 w-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-800/30 dark:text-blue-500">
+                          <svg className="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                        </span>
+
+                        <span className="text-sm sm:text-base text-gray-500">
+                          Powerful <span className="font-bold">features</span>
+                        </span>
+                      </li>
+
+                      <li className="flex space-x-3">
+                        <span className="mt-0.5 h-5 w-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600 dark:bg-blue-800/30 dark:text-blue-500">
+                          <svg className="flex-shrink-0 h-3.5 w-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
+                        </span>
+
+                        <span className="text-sm sm:text-base text-gray-500">
+                          User Experience Design
+                        </span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
               <div>
-                <h1 className="text-5xl font-bold">Box Office News!</h1>
-                <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                <button className="btn btn-primary">Get Started</button>
+                <h3 className="text-2xl font-bold tracki sm:text-3xl dark:text-gray-50">Ad vix debet docendi</h3>
+                <p className="mt-3 text-lg dark:text-gray-400">Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos etiam regione ut, persius eripuit quo id. Sit te euismod tacimates.</p>
+                <div className="mt-12 space-y-12">
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-md dark:bg-violet-400 dark:text-gray-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-7 h-7">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h4 className="text-lg font-medium leadi dark:text-gray-50">Per ei quaeque sensibus</h4>
+                      <p className="mt-2 dark:text-gray-400">Ex usu illum iudico molestie. Pro ne agam facete mediocritatem, ridens labore facete mea ei. Pro id apeirian dignissim.</p>
+                    </div>
+                  </div>
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-md dark:bg-violet-400 dark:text-gray-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-7 h-7">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h4 className="text-lg font-medium leadi dark:text-gray-50">Cu imperdiet posidonium sed</h4>
+                      <p className="mt-2 dark:text-gray-400">Amet utinam aliquando ut mea, malis admodum ocurreret nec et, elit tibique cu nec. Nec ex maluisset inciderint, ex quis.</p>
+                    </div>
+                  </div>
+                  <div className="flex">
+                    <div className="flex-shrink-0">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-md dark:bg-violet-400 dark:text-gray-900">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-7 h-7">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="ml-4">
+                      <h4 className="text-lg font-medium leadi dark:text-gray-50">Nulla omittam sadipscing mel ne</h4>
+                      <p className="mt-2 dark:text-gray-400">At sed possim oporteat probatus, justo graece ne nec, minim commodo legimus ut vix. Ut eos iudico quando soleat, nam modus.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div aria-hidden="true" className="mt-10 lg:mt-0">
+                <img src="https://source.unsplash.com/random/360x480" alt="" className="mx-auto rounded-lg shadow-lg dark:bg-gray-500" />
+              </div>
+            </div>
+            <div>
+              <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
+                <div className="lg:col-start-2">
+                  <h3 className="text-2xl font-bold tracki sm:text-3xl dark:text-gray-50">Eam nibh gloriatur ex</h3>
+                  <p className="mt-3 text-lg dark:text-gray-400">Per odio fabellas consulatu cu. Utroque detracto mel ea, quo te latine theophrastus. Ea his tale nibh dissentias, mei exerci tamquam euripidis cu.</p>
+                  <div className="mt-12 space-y-12">
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <div className="flex items-center justify-center w-12 h-12 rounded-md dark:bg-violet-400 dark:text-gray-900">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-7 h-7">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="ml-4">
+                        <h4 className="text-lg font-medium leadi dark:text-gray-50">Cibo augue offendit has ad</h4>
+                        <p className="mt-2 dark:text-gray-400">An per velit appellantur, ut utinam minimum nominavi sit, odio nostro habemus ne nec. Ne sonet regione contentiones est.</p>
+                      </div>
+                    </div>
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <div className="flex items-center justify-center w-12 h-12 rounded-md dark:bg-violet-400 dark:text-gray-900">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-7 h-7">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="ml-4">
+                        <h4 className="text-lg font-medium leadi dark:text-gray-50">At eum ferri luptatum lobortis</h4>
+                        <p className="mt-2 dark:text-gray-400">Te per quidam maiorum ocurreret, etiam delicatissimi usu ad. Ne has quod periculis. Te sit primis iisque efficiantur.</p>
+                      </div>
+                    </div>
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <div className="flex items-center justify-center w-12 h-12 rounded-md dark:bg-violet-400 dark:text-gray-900">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-7 h-7">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="ml-4">
+                        <h4 className="text-lg font-medium leadi dark:text-gray-50">Dicunt verterem evertitur eu sea</h4>
+                        <p className="mt-2 dark:text-gray-400">Audire principes rationibus eam an, autem nominavi luptatum per te. Sumo fabulas vim eu, sonet saperet eleifend ut vix.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-10 lg:mt-0 lg:col-start-1 lg:row-start-1">
+                  <img src="https://source.unsplash.com/random/361x481" alt="" className="mx-auto rounded-lg shadow-lg dark:bg-gray-500" />
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        <section className='pt-20 pb-20'>
-          <Feature></Feature>
-        </section>
 
-        <section>
-          <Blog></Blog>
-        </section>
 
-        <div className='bg-gray-800 pt-20 pb-20'>
-          <div className='flex justify-center'>
-            <h2 className='text-white text-4xl pb-20'> Features Implementation</h2>
+
+        <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+          <div className="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+            <h2 className="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">News</h2>
+            <p className="mt-1 text-gray-600 dark:text-gray-400">Stay in the know with insights from industry experts.</p>
           </div>
-          <div className="max-w-xl p-8 mx-auto  text-gray-100">
-            <ul className="space-y-12">
-              <li className="flex items-start space-x-3">
-                <a rel="noopener noreferrer" href="#" className="flex items-center h-8 text-sm hover:underline">v3.2.0</a>
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-center justify-between space-x-4 text-gray-400">
-                    <a rel="noopener noreferrer" href="#" className="inline-flex items-center px-3 py-1 my-1 space-x-2 text-sm border rounded-full group border-gray-700">
-                      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-violet-400"></span>
-                      <span className="group-hover:underline text-gray-100">Feature</span>
-                    </a>
-                    <span className="text-xs whitespace-nowrap">10h ago</span>
-                  </div>
-                  <div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tincidunt nunc ipsum tempor purus vitae id. Morbi in vestibulum nec varius. Et diam cursus quis sed purus nam. Scelerisque amet elit non sit ut tincidunt condimentum. Nisl ultrices eu venenatis diam.</p>
-                  </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <a className="group rounded-xl overflow-hidden dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+              <div className="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
+                <img className="w-full h-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="https://images.unsplash.com/photo-1586232702178-f044c5f4d4b7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80" alt="Image Description" />
+                <span className="absolute top-0 end-0 rounded-se-xl rounded-es-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
+                  Sponsored
+                </span>
+              </div>
+
+              <div className="mt-7">
+                <h3 className="text-xl font-semibold text-gray-800 group-hover:text-gray-600 dark:text-gray-200">
+                  Studio by Preline
+                </h3>
+                <p className="mt-3 text-gray-800 dark:text-gray-200">
+                  Produce professional, reliable streams easily leveraging Preline's innovative broadcast studio
+                </p>
+                <p className="mt-5 inline-flex items-center gap-x-1 text-blue-600 decoration-2 group-hover:underline font-medium">
+                  Read more
+                  <svg className="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+                </p>
+              </div>
+            </a>
+            <a className="group rounded-xl overflow-hidden dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+              <div className="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
+                <img className="w-full h-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl" src="https://images.unsplash.com/photo-1542125387-c71274d94f0a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="Image Description" />
+              </div>
+
+              <div className="mt-7">
+                <h3 className="text-xl font-semibold text-gray-800 group-hover:text-gray-600 dark:text-gray-200">
+                  Onsite
+                </h3>
+                <p className="mt-3 text-gray-800 dark:text-gray-200">
+                  Optimize your in-person experience with best-in-className capabilities like badge printing and lead retrieval
+                </p>
+                <p className="mt-5 inline-flex items-center gap-x-1 text-blue-600 decoration-2 group-hover:underline font-medium">
+                  Read more
+                  <svg className="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+                </p>
+              </div>
+            </a>
+
+            <a className="group relative flex flex-col w-full min-h-[15rem] bg-center bg-cover rounded-xl hover:shadow-lg transition bg-[url('https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3000&q=80')] dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600" href="#">
+              <div className="flex-auto p-4 md:p-6">
+                <h3 className="text-xl text-white/[.9] group-hover:text-white"><span className="font-bold">Preline</span> Press publishes books about economic and technological advancement.</h3>
+              </div>
+              <div className="pt-0 p-4 md:p-6">
+                <div className="inline-flex items-center gap-2 text-sm font-medium text-white group-hover:text-white/[.7]">
+                  Visit the site
+                  <svg className="flex-shrink-0 w-4 h-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
                 </div>
-              </li>
-              <li className="flex items-start space-x-3">
-                <a rel="noopener noreferrer" href="#" className="flex items-center h-8 text-sm hover:underline">v3.1.9</a>
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-center justify-between space-x-4 text-gray-400">
-                    <a rel="noopener noreferrer" href="#" className="inline-flex items-center px-3 py-1 my-1 space-x-2 text-sm border rounded-full group border-gray-700">
-                      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-violet-400"></span>
-                      <span className="group-hover:underline text-gray-100">Bugfix</span>
-                    </a>
-                    <span className="text-xs whitespace-nowrap">2 weeks ago</span>
-                  </div>
-                  <div className="space-y-2">
-                    <p>Scelerisque amet elit non sit ut tincidunt condimentum. Nisi ultrices eu venenatis diam.</p>
-                    <p>Illum quaerat ab inventore, eveniet repudiandae saepe, iste sed molestias laborum atque, quos reprehenderit fugit cumo!</p>
-                  </div>
-                </div>
-              </li>
-              <li className="flex items-start space-x-3">
-                <a rel="noopener noreferrer" href="#" className="flex items-center h-8 text-sm hover:underline">v3.1.9</a>
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-center justify-between space-x-4 text-gray-400">
-                    <a rel="noopener noreferrer" href="#" className="inline-flex items-center px-3 py-1 my-1 space-x-2 text-sm border rounded-full group border-gray-700">
-                      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-violet-400"></span>
-                      <span className="group-hover:underline text-gray-100">Bugfix</span>
-                    </a>
-                    <span className="text-xs whitespace-nowrap">2 weeks ago</span>
-                  </div>
-                  <div className="space-y-2">
-                    <p>Scelerisque amet elit non sit ut tincidunt condimentum. Nisi ultrices eu venenatis diam.</p>
-                    <p>Illum quaerat ab inventore, eveniet repudiandae saepe, iste sed molestias laborum atque, quos reprehenderit fugit cumo!</p>
-                  </div>
-                </div>
-              </li>
-              <li className="flex items-start space-x-3">
-                <a rel="noopener noreferrer" href="#" className="flex items-center h-8 text-sm hover:underline">v3.1.9</a>
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-center justify-between space-x-4 text-gray-400">
-                    <a rel="noopener noreferrer" href="#" className="inline-flex items-center px-3 py-1 my-1 space-x-2 text-sm border rounded-full group border-gray-700">
-                      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-violet-400"></span>
-                      <span className="group-hover:underline text-gray-100">Bugfix</span>
-                    </a>
-                    <span className="text-xs whitespace-nowrap">2 weeks ago</span>
-                  </div>
-                  <div className="space-y-2">
-                    <p>Scelerisque amet elit non sit ut tincidunt condimentum. Nisi ultrices eu venenatis diam.</p>
-                    <p>Illum quaerat ab inventore, eveniet repudiandae saepe, iste sed molestias laborum atque, quos reprehenderit fugit cumo!</p>
-                  </div>
-                </div>
-              </li>
-              <li className="flex items-start space-x-3">
-                <a rel="noopener noreferrer" href="#" className="flex items-center h-8 text-sm hover:underline">v3.1.9</a>
-                <div className="flex-1 space-y-2">
-                  <div className="flex items-center justify-between space-x-4 text-gray-400">
-                    <a rel="noopener noreferrer" href="#" className="inline-flex items-center px-3 py-1 my-1 space-x-2 text-sm border rounded-full group border-gray-700">
-                      <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-violet-400"></span>
-                      <span className="group-hover:underline text-gray-100">Bugfix</span>
-                    </a>
-                    <span className="text-xs whitespace-nowrap">2 weeks ago</span>
-                  </div>
-                  <div className="space-y-2">
-                    <p>Scelerisque amet elit non sit ut tincidunt condimentum. Nisi ultrices eu venenatis diam.</p>
-                    <p>Illum quaerat ab inventore, eveniet repudiandae saepe, iste sed molestias laborum atque, quos reprehenderit fugit cumo!</p>
-                  </div>
-                </div>
-              </li>
-            </ul>
+              </div>
+            </a>
           </div>
         </div>
+
+
+        <FAQ></FAQ>
 
         <footer className="footer footer-center p-10 bg-primary text-primary-content">
           <aside>
@@ -173,6 +293,7 @@ export default function Home() {
             </div>
           </nav>
         </footer>
+
       </div>
 
 
@@ -438,7 +559,7 @@ export const Statistic = () => {
             819
           </h6>
           <p className="mb-2 font-bold text-md">Downloads</p>
-         
+
         </div>
         <div className="text-center">
           <div className="flex items-center justify-center w-10 h-10 mx-auto mb-3 rounded-full bg-indigo-50 sm:w-12 sm:h-12">
@@ -460,7 +581,7 @@ export const Statistic = () => {
             1.3K
           </h6>
           <p className="mb-2 font-bold text-md">Users</p>
-         
+
         </div>
         <div className="text-center">
           <div className="flex items-center justify-center w-10 h-10 mx-auto mb-3 rounded-full bg-indigo-50 sm:w-12 sm:h-12">
@@ -480,7 +601,7 @@ export const Statistic = () => {
           </div>
           <h6 className="text-4xl font-bold text-deep-purple-accent-400">91</h6>
           <p className="mb-2 font-bold text-md">Subscribers</p>
-       
+
         </div>
         <div className="text-center">
           <div className="flex items-center justify-center w-10 h-10 mx-auto mb-3 rounded-full bg-indigo-50 sm:w-12 sm:h-12">
@@ -500,7 +621,7 @@ export const Statistic = () => {
           </div>
           <h6 className="text-4xl font-bold text-deep-purple-accent-400">52</h6>
           <p className="mb-2 font-bold text-md">Products</p>
-     
+
         </div>
       </div>
     </div>
@@ -510,119 +631,120 @@ export const Statistic = () => {
 
 export const Blog = () => {
   return (
-      <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-          <div className="mb-10 border-t border-b divide-y">
-              <div className="grid py-8 sm:grid-cols-4">
-                  <div className="mb-4 sm:mb-0">
-                      <div className="space-y-1 text-xs font-semibold tracking-wide uppercase">
-                          <a
-                              href="/"
-                              className="transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
-                              aria-label="Category"
-                          >
-                              Books
-                          </a>
-                          <p className="text-gray-600">5 Jan 2020</p>
-                      </div>
-                  </div>
-                  <div className="sm:col-span-3 lg:col-span-2">
-                      <div className="mb-3">
-                          <a
-                              href="/"
-                              aria-label="Article"
-                              className="inline-block text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
-                          >
-                              <p className="text-3xl font-extrabold leading-none sm:text-4xl xl:text-4xl">
-                                  Tell them I hate them
-                              </p>
-                          </a>
-                      </div>
-                      <p className="text-gray-700">
-                          Well, the way they make shows is, they make one show. That show's
-                          called a pilot. Then they show that show to the people who make
-                          shows.
-                      </p>
-                  </div>
-              </div>
-              <div className="grid py-8 sm:grid-cols-4">
-                  <div className="mb-4 sm:mb-0">
-                      <div className="space-y-1 text-xs font-semibold tracking-wide uppercase">
-                          <a
-                              href="/"
-                              className="transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
-                              aria-label="Category"
-                          >
-                              Inspiration
-                          </a>
-                          <p className="text-gray-600">15 Sep 2020</p>
-                      </div>
-                  </div>
-                  <div className="sm:col-span-3 lg:col-span-2">
-                      <div className="mb-3">
-                          <a
-                              href="/"
-                              aria-label="Article"
-                              className="inline-block text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
-                          >
-                              <p className="text-3xl font-extrabold leading-none sm:text-4xl xl:text-4xl">
-                                  A flower in my green garden
-                              </p>
-                          </a>
-                      </div>
-                      <p className="text-gray-700">
-                          Chase ball of string eat plants, meow, and throw up because I ate
-                          plants going to catch the red dot today going.
-                      </p>
-                  </div>
-              </div>
-              <div className="grid py-8 sm:grid-cols-4">
-                  <div className="mb-4 sm:mb-0">
-                      <div className="space-y-1 text-xs font-semibold tracking-wide uppercase">
-                          <a
-                              href="/"
-                              className="transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
-                              aria-label="Category"
-                          >
-                              Detective
-                          </a>
-                          <p className="text-gray-600">28 Dec 2020</p>
-                      </div>
-                  </div>
-                  <div className="sm:col-span-3 lg:col-span-2">
-                      <div className="mb-3">
-                          <a
-                              href="/"
-                              aria-label="Article"
-                              className="inline-block text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
-                          >
-                              <p className="text-3xl font-extrabold leading-none sm:text-4xl xl:text-4xl">
-                                  We never had the love we deserve
-                              </p>
-                          </a>
-                      </div>
-                      <p className="text-gray-700">
-                          Sportacus andrew weatherall goose Refined gentlemen super mario
-                          des lynam alpha trion zap.
-                      </p>
-                  </div>
-              </div>
-          </div>
-          <div className="text-center">
+    <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+      <div className="mb-10 border-t border-b divide-y">
+        <div className="grid py-8 sm:grid-cols-4">
+          <div className="mb-4 sm:mb-0">
+            <div className="space-y-1 text-xs font-semibold tracking-wide uppercase">
               <a
-                  href="/"
-                  aria-label=""
-                  className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                href="/"
+                className="transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                aria-label="Category"
               >
-                  See all articles
-                  <svg
-                      className="inline-block w-3 ml-2"
-                      fill="currentColor"
-                      viewBox="0 0 12 12"
-                  >
-                      <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
-                  </svg>
+                Books
               </a>
+              <p className="text-gray-600">5 Jan 2020</p>
+            </div>
           </div>
+          <div className="sm:col-span-3 lg:col-span-2">
+            <div className="mb-3">
+              <a
+                href="/"
+                aria-label="Article"
+                className="inline-block text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
+              >
+                <p className="text-3xl font-extrabold leading-none sm:text-4xl xl:text-4xl">
+                  Tell them I hate them
+                </p>
+              </a>
+            </div>
+            <p className="text-gray-700">
+              Well, the way they make shows is, they make one show. That show's
+              called a pilot. Then they show that show to the people who make
+              shows.
+            </p>
+          </div>
+        </div>
+        <div className="grid py-8 sm:grid-cols-4">
+          <div className="mb-4 sm:mb-0">
+            <div className="space-y-1 text-xs font-semibold tracking-wide uppercase">
+              <a
+                href="/"
+                className="transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                aria-label="Category"
+              >
+                Inspiration
+              </a>
+              <p className="text-gray-600">15 Sep 2020</p>
+            </div>
+          </div>
+          <div className="sm:col-span-3 lg:col-span-2">
+            <div className="mb-3">
+              <a
+                href="/"
+                aria-label="Article"
+                className="inline-block text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
+              >
+                <p className="text-3xl font-extrabold leading-none sm:text-4xl xl:text-4xl">
+                  A flower in my green garden
+                </p>
+              </a>
+            </div>
+            <p className="text-gray-700">
+              Chase ball of string eat plants, meow, and throw up because I ate
+              plants going to catch the red dot today going.
+            </p>
+          </div>
+        </div>
+        <div className="grid py-8 sm:grid-cols-4">
+          <div className="mb-4 sm:mb-0">
+            <div className="space-y-1 text-xs font-semibold tracking-wide uppercase">
+              <a
+                href="/"
+                className="transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+                aria-label="Category"
+              >
+                Detective
+              </a>
+              <p className="text-gray-600">28 Dec 2020</p>
+            </div>
+          </div>
+          <div className="sm:col-span-3 lg:col-span-2">
+            <div className="mb-3">
+              <a
+                href="/"
+                aria-label="Article"
+                className="inline-block text-black transition-colors duration-200 hover:text-deep-purple-accent-700"
+              >
+                <p className="text-3xl font-extrabold leading-none sm:text-4xl xl:text-4xl">
+                  We never had the love we deserve
+                </p>
+              </a>
+            </div>
+            <p className="text-gray-700">
+              Sportacus andrew weatherall goose Refined gentlemen super mario
+              des lynam alpha trion zap.
+            </p>
+          </div>
+        </div>
       </div>
+      <div className="text-center">
+        <a
+          href="/"
+          aria-label=""
+          className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
+        >
+          See all articles
+          <svg
+            className="inline-block w-3 ml-2"
+            fill="currentColor"
+            viewBox="0 0 12 12"
+          >
+            <path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z" />
+          </svg>
+        </a>
+      </div>
+    </div>
   );
 };
+
