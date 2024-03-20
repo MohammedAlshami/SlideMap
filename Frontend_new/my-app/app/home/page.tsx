@@ -18,8 +18,8 @@ export default function Home() {
       <div className='h-screen flex flex-col justify-between gap-44'>
 
 
-        <section>
-          <div className="dark:bg-violet-400">
+        <section className='flex flex-col lg:flex-row'>
+          <div className="dark:bg-violet-400 mt-12">
             <div className="container flex flex-col items-center px-4 py-16 pb-24 mx-auto text-center lg:pb-56 md:py-32 md:px-10 lg:px-32 dark:text-gray-900">
               <h1 className="text-5xl font-bold leadi sm:text-6xl xl:max-w-3xl dark:text-gray-900">Landslide Mapping Like No Before</h1>
               <p className="mt-6 mb-8 text-lg sm:mb-12 xl:max-w-3xl dark:text-gray-900">Find out more about landslides with amazing accuracy. Learn about the fascinating world of landslides!</p>
@@ -30,13 +30,13 @@ export default function Home() {
             </div>
           </div>
 
-          <div className='w-8/12 mx-auto mb-12 -mt-20 rounded-lg shadow-md lg:-mt-40 dark:bg-gray-500'>
+          <div className='w-12/12 lg:w-8/12  dark:bg-gray-500 lg:mt-36 mx-4'>
             <div className="diff aspect-[16/9]">
               <div className="diff-item-1">
                 <img alt="daisy" src="https://media.licdn.com/dms/image/D4D12AQEMHhdfnoWnJA/article-cover_image-shrink_720_1280/0/1680375976698?e=2147483647&v=beta&t=v-KxaqI8c33TXF5UsZ_s6fxsSsR_1PjHb3PktyHKPUA" />
               </div>
               <div className="diff-item-2">
-                <img alt="daisy" src="images/landslide_segmented.png" />
+                <img alt="daisy" src="https://cdn.britannica.com/34/235834-050-C5843610/two-different-breeds-of-cats-side-by-side-outdoors-in-the-garden.jpg" />
               </div>
               <div className="diff-resizer"></div>
             </div>
