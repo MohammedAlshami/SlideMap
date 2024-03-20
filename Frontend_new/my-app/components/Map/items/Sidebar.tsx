@@ -3,8 +3,8 @@ import React from 'react'
 const Sidebar = () => {
     return (
         <>
-            <div className='h-screen relative'>
-                <div className=" p-4 text-white flex flex-col space-y-6 items-center absolute w-26 bg-white  h-screen">
+            <div className='h-fit relative' style={{zIndex: 1000}}>
+                <div className=" p-4 text-white flex flex-col space-y-6 items-center absolute w-26 bg-white  h-screen pt-8">
                     <div className='space-y-6'>
                         <Navitem to='/home'>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 18v-2h18v2H3Zm0-5v-2h18v2H3Zm0-5V6h18v2H3Z" /></svg>
@@ -15,6 +15,7 @@ const Sidebar = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 21q-3.45 0-6.013-2.288T3.05 13H5.1q.35 2.6 2.313 4.3T12 19q2.925 0 4.963-2.038T19 12q0-2.925-2.038-4.963T12 5q-1.725 0-3.225.8T6.25 8H9v2H3V4h2v2.35q1.275-1.6 3.113-2.475T12 3q1.875 0 3.513.713t2.85 1.924q1.212 1.213 1.925 2.85T21 12q0 1.875-.713 3.513t-1.924 2.85q-1.213 1.212-2.85 1.925T12 21Zm2.8-4.8L11 12.4V7h2v4.6l3.2 3.2l-1.4 1.4Z" /></svg>
                         </Navitem>
 
+                        <SideItem />
                     </div>
                     <div className="divider"></div>
 
@@ -28,9 +29,7 @@ const Sidebar = () => {
 
                 </div>
 
-                <div className='pl-28 pt-4'>
-                    <Searchbar></Searchbar>
-                </div>
+              
             </div>
         </>
     )
@@ -104,7 +103,7 @@ export const Searchbar = () => {
                         />
                     </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                        <path  d="m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.612 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3l-1.4 1.4ZM9.5 14q1.875 0 3.188-1.313T14 9.5q0-1.875-1.313-3.188T9.5 5Q7.625 5 6.312 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14Z" />
+                        <path d="m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5q0-2.725 1.888-4.612T9.5 3q2.725 0 4.612 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3l-1.4 1.4ZM9.5 14q1.875 0 3.188-1.313T14 9.5q0-1.875-1.313-3.188T9.5 5Q7.625 5 6.312 6.313T5 9.5q0 1.875 1.313 3.188T9.5 14Z" />
                     </svg>
 
                 </div>
@@ -126,3 +125,39 @@ export const Searchbar = () => {
         </div>
     );
 };
+
+
+const SideItem = () => {
+
+    return (<>
+
+        <div className="dropdown dropdown-right">
+            {/* <div tabIndex={0} role="button" className="btn m-0">Click</div> */}
+
+            <div tabIndex={0} role="button" className='w-6 fill-[#8A2BE2] cursor-pointer'>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 18v-2h18v2H3Zm0-5v-2h18v2H3Zm0-5V6h18v2H3Z" /></svg>
+
+            </div>
+
+            <div tabIndex={0} className="dropdown-content z-[1] scrollbar-hide p-4 shadow bg-base-100 rounded-lg w-96 h-[300px] overflow-y-scroll ml-12 bg-white space-y-4">
+
+                <h1 className='text-black font-bold text-lg'>BaseMaps</h1>
+                <div className='grid grid-cols-3 gap-2'>
+                    <div className='flex justify-center items-center flex-col gap-2 w-fit cursor-pointer'>
+                        <div className='h-20 w-30 overflow-hidden rounded-lg shadow-lg'>
+                            <img src="https://media.istockphoto.com/id/1478068139/photo/united-states-topographic-map-horizontal-3d-render-dark-ocean-neutral.webp?b=1&s=170667a&w=0&k=20&c=VEwBt48xdOAT8ofTGg2gVqtnMEQm7gFcyF9o_442ojg=" className='shadow-xl	 hover:scale-110 transition duration-500  w-full h-full object-cover  rounded-lg' alt="" />
+                        </div>
+                        <h2 className='text-black text-sm'>Blueprint</h2>
+                    </div>   
+            
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+    </>)
+};
+
