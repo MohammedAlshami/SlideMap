@@ -2,6 +2,13 @@
 
 import { useState } from "react";
 import MainLayout from "@/components/MainLayout";
+import dynamic from "next/dynamic";
+
+const DynamicHeader = dynamic(() => import('../components/Map/Map'), {
+    loading: () => <p>Loading...</p>,
+    ssr: false,
+  })
+   
 
 const MapPage = () => {
   const [formData, setFormData] = useState({
@@ -31,11 +38,12 @@ const MapPage = () => {
       <div className="flex justify-center py-44 px-12">
         <div className="flex flex-col md:flex-row justify-center items-center md:space-x-8">
           <div className="w-full md:w-2/3 lg:w-1/2 mb-8 md:mb-0">
-            <iframe
+            {/* <iframe
               width="100%"
               className="h-96 md:h-[600px]"
               src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-            ></iframe>
+            ></iframe> */}
+            <DynamicHeader></DynamicHeader>
           </div>
           <div className="w-full md:w-1/3 lg:w-1/2 px-4">
             <form onSubmit={handleSubmit}>
