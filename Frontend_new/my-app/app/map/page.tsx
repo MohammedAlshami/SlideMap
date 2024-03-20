@@ -14,11 +14,11 @@ const Page = () => {
     <>
 
 
-      <div className="container relative" style={{ width: 500, height: 500 }}>
+      <div className="container relative h-[98vh] ">
         <div
           className="absolute h-screen top-0 left-0" style={{ zIndex: 10000 }}
         >
-          <Sidebar></Sidebar>
+          {/* <Sidebar></Sidebar> */}
         </div>
         <HomePage></HomePage>
       </div>
