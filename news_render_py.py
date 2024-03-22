@@ -65,7 +65,33 @@ def all_news():
         news_list.append(news_dict)
 
     return jsonify(news_list)
+@app.route('/report', methods=['POST'])
+def receive_report():
+    try:
+        # Get the JSON data from the request
+        report_data = request.json
+        
+        # Extract the relevant fields
+        landslide_name = report_data.get('landslideName')
+        incident_date = report_data.get('incidentDate')
+        size = report_data.get('size')
+        casualties = report_data.get('casualties')
+        images = report_data.get('images')
+        geojson = report_data.get('geoJSON')
 
+        # Print the extracted data
+        print(f"Landslide Name: {landslide_name}")
+        print(f"Incident Date: {incident_date}")
+        print(f"Size: {size}")
+        print(f"Casualties: {casualties}")
+        print(f"Images: {images}")
+        print(f"GeoJSON: {geojson}")
+
+        # You can perform further processing here
+        
+        return jsonify({'message': 'Report received successfully'}), 200
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)
