@@ -1,19 +1,24 @@
-"use client";
-
-import React from "react";
-import dynamic from "next/dynamic";
-
-const DynamicHeader = dynamic(() => import('../components/Map/Map'), {
-    loading: () => <p>Loading...</p>,
-    ssr: false,
-  })
-   
+'use client';
+import React, { useState } from 'react'
+import OperationStatusModal from '../components/Modal/OperationStatusModal';
 const page = () => {
-  return (
-    <>
-      <DynamicHeader></DynamicHeader>
-    </>
-  );
-};
+  const [showModal, setShowModal] = useState(false);
 
-export default page;
+  const handleOpenModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+  return (
+    <div>
+      <button className="btn" onClick={handleOpenModal}>
+        Open Modal
+      </button>
+      <OperationStatusModal success={showModal} onClose={handleCloseModal} />
+    </div>
+  )
+}
+
+export default page

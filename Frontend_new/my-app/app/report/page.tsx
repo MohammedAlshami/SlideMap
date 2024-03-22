@@ -3,20 +3,39 @@
 import { useState } from "react";
 import MainLayout from "@/components/MainLayout";
 import dynamic from "next/dynamic";
+import submitFormData from "../components/Controllers/SubmitForm";
+import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation'
+import OperationStatusModal from "../components/Modal/OperationStatusModal";
 
-const DynamicHeader = dynamic(() => import('../components/Map/Map'), {
-    loading: () => <p>Loading...</p>,
-    ssr: false,
-  })
-   
+
+
+const DynamicHeader = dynamic(() => import("../components/Map/Map"), {
+  loading: () => <p>Loading...</p>,
+  ssr: false,
+});
 
 const MapPage = () => {
+  
+  const router = useRouter();
+  const [geoJSON, setGeoJSON] = useState(null);
+
+  const handleCreate = (data) => {
+    setGeoJSON(data);
+    // Update form data with GeoJSON (optional, can be done in handleChange)
+    setFormData((prevData) => ({
+      ...prevData,
+      geoJSON: data,
+    }));
+  };
+
   const [formData, setFormData] = useState({
     landslideName: "",
     incidentDate: "",
     size: "",
     casualties: "",
     images: [],
+    geoJSON: "",
   });
 
   const handleChange = (e) => {
@@ -27,10 +46,17 @@ const MapPage = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission here
     console.log(formData);
+    // alert(formData);
+
+    const response = await submitFormData({ formData });
+    console.log('Response:', response);
+    router.push("/")
+
+  
   };
 
   return (
@@ -43,9 +69,10 @@ const MapPage = () => {
               className="h-96 md:h-[600px]"
               src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
             ></iframe> */}
-            <DynamicHeader></DynamicHeader>
+            <DynamicHeader onCreate={handleCreate}></DynamicHeader>
           </div>
           <div className="w-full md:w-1/3 lg:w-1/2 px-4">
+      
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
