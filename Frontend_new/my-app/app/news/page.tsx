@@ -3,6 +3,13 @@ import React, { useEffect, useState } from "react";
 
 import Navbar from "@/components/navbar";
 import MainLayout from "@/components/MainLayout";
+import dynamic from "next/dynamic";
+// import { News } from "./News";
+
+// const DynamicHeader = dynamic(() => import('../components/News/News'), {
+//   loading: () => <p className="text-4xl text-black bg-red-600 w-96 h-96">Loadinsssssssg...</p>,
+// })
+
 const page = () => {
   return <Blog></Blog>;
 };
@@ -11,6 +18,8 @@ export default page;
 
 export const Blog = () => {
   const [newsList, setNewsList] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredNews, setFilteredNews] = useState([]);
 
   useEffect(() => {
     // Fetch data from Flask backend
@@ -19,11 +28,25 @@ export const Blog = () => {
       .then((data) => {
         // Set the fetched news list
         setNewsList(data);
+        setFilteredNews(data); // Initialize filtered news with all news articles
       })
       .catch((error) => {
         console.error("Error fetching news:", error);
       });
   }, []);
+
+  // Function to handle search
+  const handleSearch = (e) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+    const filtered = newsList.filter(
+      (news) =>
+        news.title.toLowerCase().includes(query) ||
+        news.first_sentence.toLowerCase().includes(query)
+    );
+    setFilteredNews(filtered);
+  };
+
   return (
     <>
       <MainLayout>
@@ -49,11 +72,13 @@ export const Blog = () => {
                         <span className="sr-only">Search article</span>
                       </label>
                       <input
-                        type="email"
+                        type="text"
                         name="hs-search-article-1"
                         id="hs-search-article-1"
                         className="py-2.5 px-4 block w-full border-transparent rounded-lg focus:border-blue-500 focus:ring-blue-500 dark:bg-slate-900 dark:border-transparent dark:text-gray-400 dark:focus:ring-gray-600"
                         placeholder="Search article"
+                        value={searchQuery}
+                        onChange={handleSearch}
                       />
                     </div>
                     <div className="flex-[0_0_auto]">
@@ -87,20 +112,20 @@ export const Blog = () => {
                     <path
                       d="M5 16.4754C11.7688 27.4499 21.2452 57.3224 5 89.0164"
                       stroke="currentColor"
-                      stroke-width="10"
-                      stroke-linecap="round"
+                      strokeWidth="10"
+                      strokeLinecap="round"
                     />
                     <path
                       d="M33.6761 112.104C44.6984 98.1239 74.2618 57.6776 83.4821 5"
                       stroke="currentColor"
-                      stroke-width="10"
-                      stroke-linecap="round"
+                      strokeWidth="10"
+                      strokeLinecap="round"
                     />
                     <path
                       d="M50.5525 130C68.2064 127.495 110.731 117.541 116 78.0874"
                       stroke="currentColor"
-                      stroke-width="10"
-                      stroke-linecap="round"
+                      strokeWidth="10"
+                      strokeLinecap="round"
                     />
                   </svg>
                 </div>
@@ -117,8 +142,8 @@ export const Blog = () => {
                     <path
                       d="M4 82.4591C54.7956 92.8751 30.9771 162.782 68.2065 181.385C112.642 203.59 127.943 78.57 122.161 25.5053C120.504 2.2376 93.4028 -8.11128 89.7468 25.5053C85.8633 61.2125 130.186 199.678 180.982 146.248L214.898 107.02C224.322 95.4118 242.9 79.2851 258.6 107.02C274.299 134.754 299.315 125.589 309.861 117.539L343 93.4426"
                       stroke="currentColor"
-                      stroke-width="7"
-                      stroke-linecap="round"
+                      strokeWidth="7"
+                      strokeLinecap="round"
                     />
                   </svg>
                 </div>
@@ -233,31 +258,34 @@ export const Blog = () => {
 
         <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {newsList.map((news) => (
-              <a
-                key={news.index}
-                href={`/news/article?index=${news.index}`}
-                className="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl p-5 dark:border-gray-700 dark:hover:border-transparent dark:hover:shadow-black/[.4] dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              >
-                <div className="aspect-w-16 aspect-h-11">
-                  <img
-                    className="w-full object-cover rounded-xl"
-                    src={`https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/pin-s+9ed4bd(${news.lat},${news.lon})/${news.lon},${news.lat},14,0,0/800x600?access_token=pk.eyJ1IjoibXNoYW1pIiwiYSI6ImNsb2ZqMzFkbTBudTMycnFjM3QybW54MnAifQ.8SDg8QedEnsOGHU4AL9L4A`}
-                    alt="Image Description"
-                  />
-                </div>
-                <div className="my-6">
-                  <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:group-hover:text-white">
-                    {news.title}
-                  </h3>
-                  <p className="mt-5 text-gray-600 dark:text-gray-400">
-                    {news.first_sentence}
-                  </p>
-                </div>
-              </a>
-            ))}
-
+            <>
+              {/* Search bar */}
        
+              {/* Display filtered news */}
+              {filteredNews.map((news) => (
+                <a
+                  key={news.index}
+                  href={`/news/article?index=${news.index}`}
+                  className="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg transition-all duration-300 rounded-xl p-5 dark:border-gray-700 dark:hover:border-transparent dark:hover:shadow-black/[.4] dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                >
+                  <div className="aspect-w-16 aspect-h-11">
+                    <img
+                      className="w-full object-cover rounded-xl"
+                      src={`https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/pin-s+9ed4bd(${news.lat},${news.lon})/${news.lon},${news.lat},14,0,0/800x600?access_token=pk.eyJ1IjoibXNoYW1pIiwiYSI6ImNsb2ZqMzFkbTBudTMycnFjM3QybW54MnAifQ.8SDg8QedEnsOGHU4AL9L4A`}
+                      alt="Image Description"
+                    />
+                  </div>
+                  <div className="my-6">
+                    <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:group-hover:text-white">
+                      {news.title}
+                    </h3>
+                    <p className="mt-5 text-gray-600 dark:text-gray-400">
+                      {news.first_sentence}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </>
           </div>
         </div>
       </MainLayout>
