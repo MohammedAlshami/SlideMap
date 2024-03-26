@@ -19,7 +19,7 @@ const Sidebar = () => {
                     </div>
                     <div className="divider"></div>
 
-                    <div className='space-y-6'>
+                    <div className='space-y-6'> 
                         <HistoryItem></HistoryItem>
                         <HistoryItem></HistoryItem>
                         <HistoryItem></HistoryItem>

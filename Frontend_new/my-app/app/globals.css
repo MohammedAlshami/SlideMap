@@ -16,3 +16,7 @@
   .sr-only {
     display: none;
   }
+
+    nextjs-portal {
+    display: none;
+  }

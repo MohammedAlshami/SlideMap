@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { redirect } from "next/navigation";
 
-import MainLayout from "@/components/MainLayout";
+import MainLayout from "@/app/components/MainLayout";
 import { useSearchParams } from "next/navigation";
 
 const Page = () => {

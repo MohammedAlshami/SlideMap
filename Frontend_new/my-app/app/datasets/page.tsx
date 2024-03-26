@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Navbar from '@/components/navbar'
-import MainLayout from '@/components/MainLayout'
+import Navbar from '@/app/components/Navbar'
+import MainLayout from '@/app/components/MainLayout'
 const page = () => {
     return (
         <Blog></Blog>

@@ -1,14 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import MainLayout from "@/components/MainLayout";
+import MainLayout from "@/app/components/MainLayout";
 import dynamic from "next/dynamic";
 import submitFormData from "../components/Controllers/SubmitForm";
-import { redirect } from 'next/navigation';
-import { useRouter } from 'next/navigation'
+import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import OperationStatusModal from "../components/Modal/OperationStatusModal";
-
-
 
 const DynamicHeader = dynamic(() => import("../components/Map/Map"), {
   loading: () => <p>Loading...</p>,
@@ -16,9 +14,9 @@ const DynamicHeader = dynamic(() => import("../components/Map/Map"), {
 });
 
 const MapPage = () => {
-  
   const router = useRouter();
   const [geoJSON, setGeoJSON] = useState(null);
+  const [successModalOpen, setSuccessModalOpen] = useState(false);
 
   const handleCreate = (data) => {
     setGeoJSON(data);
@@ -53,26 +51,171 @@ const MapPage = () => {
     // alert(formData);
 
     const response = await submitFormData({ formData });
-    console.log('Response:', response);
-    router.push("/")
-
-  
+    console.log("Response:", response);
+    document.getElementById("my_modal_1").showModal();
+    setTimeout(() => {
+      router.push("/reports");
+    }, 3000);
+    // router.push("/");
   };
 
   return (
     <MainLayout>
       <div className="flex justify-center py-44 px-12">
-        <div className="flex flex-col md:flex-row justify-center items-center md:space-x-8">
-          <div className="w-full md:w-2/3 lg:w-1/2 mb-8 md:mb-0">
-            {/* <iframe
-              width="100%"
-              className="h-96 md:h-[600px]"
-              src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street,%20Dublin,%20Ireland+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-            ></iframe> */}
-            <DynamicHeader onCreate={handleCreate}></DynamicHeader>
+        {/* Open the modal using document.getElementById('ID').showModal() method */}
+
+        <dialog id="my_modal_1" className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg text-center">
+              Awesome, You've just made a report
+            </h3>
+            <p className="py-4 text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="4em"
+                height="4em"
+                viewBox="0 0 24 24"
+                className="text-center mx-auto"
+              >
+                <circle cx={12} cy={2} r={0} fill="#8c00ff">
+                  <animate
+                    attributeName="r"
+                    begin={0}
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+                <circle
+                  cx={12}
+                  cy={2}
+                  r={0}
+                  fill="#8c00ff"
+                  transform="rotate(45 12 12)"
+                >
+                  <animate
+                    attributeName="r"
+                    begin="0.125s"
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+                <circle
+                  cx={12}
+                  cy={2}
+                  r={0}
+                  fill="#8c00ff"
+                  transform="rotate(90 12 12)"
+                >
+                  <animate
+                    attributeName="r"
+                    begin="0.25s"
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+                <circle
+                  cx={12}
+                  cy={2}
+                  r={0}
+                  fill="#8c00ff"
+                  transform="rotate(135 12 12)"
+                >
+                  <animate
+                    attributeName="r"
+                    begin="0.375s"
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+                <circle
+                  cx={12}
+                  cy={2}
+                  r={0}
+                  fill="#8c00ff"
+                  transform="rotate(180 12 12)"
+                >
+                  <animate
+                    attributeName="r"
+                    begin="0.5s"
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+                <circle
+                  cx={12}
+                  cy={2}
+                  r={0}
+                  fill="#8c00ff"
+                  transform="rotate(225 12 12)"
+                >
+                  <animate
+                    attributeName="r"
+                    begin="0.625s"
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+                <circle
+                  cx={12}
+                  cy={2}
+                  r={0}
+                  fill="#8c00ff"
+                  transform="rotate(270 12 12)"
+                >
+                  <animate
+                    attributeName="r"
+                    begin="0.75s"
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+                <circle
+                  cx={12}
+                  cy={2}
+                  r={0}
+                  fill="#8c00ff"
+                  transform="rotate(315 12 12)"
+                >
+                  <animate
+                    attributeName="r"
+                    begin="0.875s"
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+              </svg>
+              <br />
+              You're Being Redirect To Reports Page <br /> Hold ON..........{" "}
+            </p>
           </div>
-          <div className="w-full md:w-1/3 lg:w-1/2 px-4">
-      
+        </dialog>
+        <div className="flex flex-col lg:flex-row justify-center items-center md:space-x-8 space-y-12">
+          <DynamicHeader onCreate={handleCreate}></DynamicHeader>
+          <div className="w-full lg:w-1/2 px-4">
             <form onSubmit={handleSubmit}>
               <input
                 type="text"

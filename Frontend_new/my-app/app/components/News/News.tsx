@@ -34,6 +34,7 @@ const [filteredNews, setFilteredNews] = useState([]);
 
   return (
     <>
+
       {/* Search bar */}
       <input
         type="text"

@@ -9,10 +9,24 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        white: "#fff",
+        blueviolet: {
+          "100": "#9747ff",
+          "200": "#6938d3",
+        }
+      },
+      spacing: {},
+      fontFamily: {
+        helvetica: "Helvetica",
+      },
+      fontSize: {
+        xs: "12px",
+        "base-7": "16.7px",
+        sm: "14px",
+        "lg-8": "18.8px",
+        "base-4": "16.4px",
+        inherit: "inherit",
       },
     },
   },

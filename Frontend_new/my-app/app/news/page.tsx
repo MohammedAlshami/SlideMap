@@ -1,8 +1,8 @@
 "use client";
 import React, { useEffect, useState } from "react";
 
-import Navbar from "@/components/navbar";
-import MainLayout from "@/components/MainLayout";
+import Navbar from "@/app/components/Navbar";
+import MainLayout from "@/app/components/MainLayout";
 import dynamic from "next/dynamic";
 // import { News } from "./News";
 
@@ -20,8 +20,10 @@ export const Blog = () => {
   const [newsList, setNewsList] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredNews, setFilteredNews] = useState([]);
+  const [fetchComplete, setFetchComplete] = useState(false);
 
   useEffect(() => {
+    document.getElementById("my_modal_1").showModal();
     // Fetch data from Flask backend
     fetch("http://localhost:5000/all")
       .then((response) => response.json())
@@ -29,11 +31,19 @@ export const Blog = () => {
         // Set the fetched news list
         setNewsList(data);
         setFilteredNews(data); // Initialize filtered news with all news articles
+        setFetchComplete(true);
       })
       .catch((error) => {
         console.error("Error fetching news:", error);
       });
   }, []);
+  useEffect(() => {
+    if (fetchComplete) {
+      setTimeout(() => {
+        document.getElementById("my_modal_1").close();
+      }, 1000);
+    }
+  }, [fetchComplete]);
 
   // Function to handle search
   const handleSearch = (e) => {
@@ -50,6 +60,156 @@ export const Blog = () => {
   return (
     <>
       <MainLayout>
+        <dialog id="my_modal_1" className="modal">
+          <div className="modal-box">
+            <h3 className="font-bold text-lg text-center">
+             Loading The News For You
+            </h3>
+            <p className="py-4 text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="4em"
+                height="4em"
+                viewBox="0 0 24 24"
+                className="text-center mx-auto"
+              >
+                <circle cx={12} cy={2} r={0} fill="#8c00ff">
+                  <animate
+                    attributeName="r"
+                    begin={0}
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+                <circle
+                  cx={12}
+                  cy={2}
+                  r={0}
+                  fill="#8c00ff"
+                  transform="rotate(45 12 12)"
+                >
+                  <animate
+                    attributeName="r"
+                    begin="0.125s"
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+                <circle
+                  cx={12}
+                  cy={2}
+                  r={0}
+                  fill="#8c00ff"
+                  transform="rotate(90 12 12)"
+                >
+                  <animate
+                    attributeName="r"
+                    begin="0.25s"
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+                <circle
+                  cx={12}
+                  cy={2}
+                  r={0}
+                  fill="#8c00ff"
+                  transform="rotate(135 12 12)"
+                >
+                  <animate
+                    attributeName="r"
+                    begin="0.375s"
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+                <circle
+                  cx={12}
+                  cy={2}
+                  r={0}
+                  fill="#8c00ff"
+                  transform="rotate(180 12 12)"
+                >
+                  <animate
+                    attributeName="r"
+                    begin="0.5s"
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+                <circle
+                  cx={12}
+                  cy={2}
+                  r={0}
+                  fill="#8c00ff"
+                  transform="rotate(225 12 12)"
+                >
+                  <animate
+                    attributeName="r"
+                    begin="0.625s"
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+                <circle
+                  cx={12}
+                  cy={2}
+                  r={0}
+                  fill="#8c00ff"
+                  transform="rotate(270 12 12)"
+                >
+                  <animate
+                    attributeName="r"
+                    begin="0.75s"
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+                <circle
+                  cx={12}
+                  cy={2}
+                  r={0}
+                  fill="#8c00ff"
+                  transform="rotate(315 12 12)"
+                >
+                  <animate
+                    attributeName="r"
+                    begin="0.875s"
+                    calcMode="spline"
+                    dur="1s"
+                    keySplines="0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8;0.2 0.2 0.4 0.8"
+                    repeatCount="indefinite"
+                    values="0;2;0;0"
+                  ></animate>
+                </circle>
+              </svg>
+              <br />
+              Thank You For Beeing Patient
+            </p>
+          </div>
+        </dialog>
+        <div className="h-32"></div>
         <div className="relative overflow-hidden">
           <div className="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-24">
             <div className="text-center">
@@ -149,7 +309,7 @@ export const Blog = () => {
                 </div>
               </div>
 
-              <div className="mt-10 sm:mt-20">
+              <div className="mt-10 sm:mt-6">
                 <a
                   className="m-1 py-3 px-4 inline-flex items-center gap-x-2 text-sm rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-white dark:hover:bg-gray-800 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                   href="#"
@@ -260,7 +420,7 @@ export const Blog = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <>
               {/* Search bar */}
-       
+
               {/* Display filtered news */}
               {filteredNews.map((news) => (
                 <a
