@@ -1,24 +1,13 @@
-'use client';
-import React, { useState } from 'react'
-import OperationStatusModal from '../components/Modal/OperationStatusModal';
+import React from "react";
+
 const page = () => {
-  const [showModal, setShowModal] = useState(false);
-
-  const handleOpenModal = () => {
-    setShowModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
   return (
-    <div>
-      <button className="btn" onClick={handleOpenModal}>
-        Open Modal
-      </button>
-      <OperationStatusModal success={showModal} onClose={handleCloseModal} />
+    <div className="h-[300vh]">
+      <div className=" inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]">
+        <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_800px_at_100%_200px,#d5c5ff,transparent)]"></div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

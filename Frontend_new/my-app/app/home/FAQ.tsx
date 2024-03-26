@@ -11,7 +11,6 @@ export const FAQ = () => {
               <p className="mt-1 hidden md:block text-gray-600 dark:text-gray-400">Answers to the most frequently asked questions.</p>
             </div>
           </div>
-What are landslides?
           <div className="md:col-span-3">
             <div className="hs-accordion-group divide-y divide-gray-200 dark:divide-gray-700">
               <div className="hs-accordion pb-3 active" id="hs-basic-with-title-and-arrow-stretched-heading-one">

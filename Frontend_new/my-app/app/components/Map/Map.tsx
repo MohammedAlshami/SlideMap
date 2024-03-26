@@ -98,18 +98,18 @@ const MapPage = ({ onCreate }) => {
 
   return (
     <>
-      <MapContainer
-        center={center}
-        zoom={13}
-        scrollWheelZoom={true}
-        className="h-96 md:h-[600px]"
-        style={{ width: "100vh" }}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
-        />
-        {/* <LayersControl position="topright">
+      <div className="bg-purple-400 p-2 rounded-lg">
+        <MapContainer
+          center={center}
+          zoom={13}
+          scrollWheelZoom={true}
+          className="h-96 md:h-[600px] w-screen sm:w-[100vh] lg:w-[120vh] xl:w-[80vh]"
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+          />
+          {/* <LayersControl position="topright">
         <LayersControl.Overlay name="Marker with popup">
           <Marker position={center}>
             <Popup>
@@ -148,24 +148,25 @@ const MapPage = ({ onCreate }) => {
         </LayersControl.Overlay>
       </LayersControl> */}
 
-        <FeatureGroup>
-          <EditControl
-            onDrawStart={_onDrawStart}
-            position="topleft"
-            onEdited={_onEdited}
-            onCreated={_onCreated}
-            onDeleted={_onDeleted}
-            draw={{
-              polyline: false,
-              rectangle: false,
-              circlemarker: false,
-              circle: false,
-              polygon: true,
-              marker: false,
-            }}
-          />
-        </FeatureGroup>
-      </MapContainer>
+          <FeatureGroup>
+            <EditControl
+              onDrawStart={_onDrawStart}
+              position="topleft"
+              onEdited={_onEdited}
+              onCreated={_onCreated}
+              onDeleted={_onDeleted}
+              draw={{
+                polyline: false,
+                rectangle: false,
+                circlemarker: false,
+                circle: false,
+                polygon: true,
+                marker: false,
+              }}
+            />
+          </FeatureGroup>
+        </MapContainer>
+      </div>
     </>
   );
 };
