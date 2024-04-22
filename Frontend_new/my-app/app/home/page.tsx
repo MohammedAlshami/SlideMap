@@ -9,6 +9,9 @@ import Features1 from "../components/Features/Features1";
 // import timeline from "./Timeline";
 import Footer1 from "../components/Footers/Footer1";
 import Roadmap from "./Roadmap";
+import dynamic from 'next/dynamic'
+// const Features1 = dynamic(() => import('../components/Features/Features1'), { ssr: false })
+
 export default function Home() {
   const args = {
     // Add your desired props here

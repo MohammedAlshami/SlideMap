@@ -63,7 +63,6 @@ const LoadingModal = () => {
 
 // Define the page component
 const Page = () => {
-
   useEffect(() => {
     document.getElementById("my_modal_1").showModal();
     const iframe = document.querySelector("iframe");

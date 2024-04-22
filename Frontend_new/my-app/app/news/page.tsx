@@ -25,7 +25,7 @@ export const Blog = () => {
   useEffect(() => {
     document.getElementById("my_modal_1").showModal();
     // Fetch data from Flask backend
-    fetch("http://localhost:5000/all")
+    fetch("https://faas-sgp1-18bc02ac.doserverless.co/api/v1/web/fn-3892d130-4311-4164-b952-836009a354e2/default/all")
       .then((response) => response.json())
       .then((data) => {
         // Set the fetched news list
