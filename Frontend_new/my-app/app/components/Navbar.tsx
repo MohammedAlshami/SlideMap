@@ -105,6 +105,17 @@ const Navbar = () => {
               >
                 Report Landslide
               </a>
+
+              <a
+                className={`font-medium ${
+                  pathname === "/reports"
+                    ? "text-[#8A2BE2] hover:text-blue-400"
+                    : "text-gray-500 hover:text-[#8A2BE2]"
+                } md:py-6`}
+                href="/reports"
+              >
+                Reports
+              </a>
               <a
                 className={`font-medium ${
                   pathname === "/news"
