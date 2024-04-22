@@ -23,7 +23,7 @@ export const Blog = () => {
 
   useEffect(() => {
     // Fetch data from Flask backend
-    fetch("http://localhost:5000/all")
+    fetch("http://localhost:5000/reports")
       .then((response) => response.json())
       .then((data) => {
         // Set the fetched news list
@@ -261,7 +261,7 @@ export const Blog = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <>
               {/* Search bar */}
-       
+
               {/* Display filtered news */}
               {filteredNews.map((news) => (
                 <a
@@ -272,16 +272,21 @@ export const Blog = () => {
                   <div className="aspect-w-16 aspect-h-11">
                     <img
                       className="w-full object-cover rounded-xl"
-                      src={`https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/pin-s+9ed4bd(${news.lat},${news.lon})/${news.lon},${news.lat},14,0,0/800x600?access_token=pk.eyJ1IjoibXNoYW1pIiwiYSI6ImNsb2ZqMzFkbTBudTMycnFjM3QybW54MnAifQ.8SDg8QedEnsOGHU4AL9L4A`}
+                      src={news.images[0]}
                       alt="Image Description"
                     />
                   </div>
                   <div className="my-6">
-                    <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:group-hover:text-white">
-                      {news.title}
-                    </h3>
+                  <div className="flex w-full justify-between">
+                      <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:group-hover:text-white">
+                        {news.title}
+                      </h3>
+                      <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:group-hover:text-white">
+                        {news.landslide_size}kmsq
+                      </h3>
+                    </div>
                     <p className="mt-5 text-gray-600 dark:text-gray-400">
-                      {news.first_sentence}
+                      {news.details}
                     </p>
                   </div>
                 </a>

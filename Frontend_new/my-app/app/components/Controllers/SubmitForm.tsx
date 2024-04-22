@@ -6,7 +6,7 @@ interface SubmitFormDataProps {
 
 const submitFormData = async ({ formData }: SubmitFormDataProps) => {
   try {
-    const tableName = 'testing';
+    const tableName = 'SlideMapReports';
     const documentId = await uploadToFirestore({ formData, tableName });
     // alert(documentId);
     const response = await fetch("http://127.0.0.1:5000/report", {

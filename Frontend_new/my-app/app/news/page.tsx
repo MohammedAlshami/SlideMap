@@ -25,7 +25,7 @@ export const Blog = () => {
   useEffect(() => {
     document.getElementById("my_modal_1").showModal();
     // Fetch data from Flask backend
-    fetch("https://faas-sgp1-18bc02ac.doserverless.co/api/v1/web/fn-3892d130-4311-4164-b952-836009a354e2/default/all")
+    fetch("http://127.0.0.1:5000//all")
       .then((response) => response.json())
       .then((data) => {
         // Set the fetched news list
@@ -52,7 +52,7 @@ export const Blog = () => {
     const filtered = newsList.filter(
       (news) =>
         news.title.toLowerCase().includes(query) ||
-        news.first_sentence.toLowerCase().includes(query)
+        news.details.toLowerCase().includes(query)
     );
     setFilteredNews(filtered);
   };
@@ -422,7 +422,7 @@ export const Blog = () => {
               {/* Search bar */}
 
               {/* Display filtered news */}
-              {filteredNews.map((news) => (
+              {filteredNews.slice(0, 6).map((news) => (
                 <a
                   key={news.index}
                   href={`/news/article?index=${news.index}`}
