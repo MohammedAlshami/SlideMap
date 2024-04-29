@@ -19,7 +19,7 @@ const Article = () => {
   
 
     // Fetch data from API endpoint
-    fetch(`https://faas-sgp1-18bc02ac.doserverless.co/api/v1/web/fn-3892d130-4311-4164-b952-836009a354e2/default/news?index=${search}`)
+    fetch(`http://127.0.0.1:5000?index=${search}`)
       .then((response) => response.json())
       .then((data) => {
         // Check if the data is an object

@@ -8,13 +8,15 @@ const submitFormData = async ({ formData }: SubmitFormDataProps) => {
   try {
     const tableName = 'SlideMapReports';
     const documentId = await uploadToFirestore({ formData, tableName });
+
+    console.log("right before sending: ", formData);
     // alert(documentId);
     const response = await fetch("http://127.0.0.1:5000/report", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(documentId),
     });
 
     if (response.ok) {

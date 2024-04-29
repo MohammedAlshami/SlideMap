@@ -7,6 +7,26 @@ import React from "react";
 const Navbar = () => {
   const isAuthenticated = checkSessionAuthCookie();
   const { href: currentUrl, pathname } = useUrl() ?? {};
+
+  function handleLogout() {
+    // Function to delete a specific cookie
+    function deleteCookie(name) {
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=" + window.location.hostname;
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/; domain=" + window.location.hostname.replace(/^www\./i, "");
+    }
+
+    // Delete the session_auth cookie
+    deleteCookie('session_auth');
+
+    // Optionally clear local and session storage
+    localStorage.clear();
+    sessionStorage.clear();
+
+    // Redirect to the home page
+    window.location.href = "/";
+}
+
   return (
     <>
       <header
@@ -187,7 +207,7 @@ const Navbar = () => {
                 <li>
                   <a>Settings</a>
                 </li>
-                <li>
+                <li onClick={handleLogout}>
                   <a>Logout</a>
                 </li>
               </ul>

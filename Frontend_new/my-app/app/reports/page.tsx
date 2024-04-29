@@ -282,7 +282,7 @@ export const Blog = () => {
                         {news.title}
                       </h3>
                       <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:group-hover:text-white">
-                        {news.landslide_size}kmsq
+                        {news.size}kmsq
                       </h3>
                     </div>
                     <p className="mt-5 text-gray-600 dark:text-gray-400">

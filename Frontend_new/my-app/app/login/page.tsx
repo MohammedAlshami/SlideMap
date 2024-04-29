@@ -6,10 +6,10 @@ import MainLayout from "@/app/components/MainLayout";
 import { redirect, useRouter } from "next/navigation";
 import { checkSessionAuthCookie } from "../components/Controllers/Cookies";
 
-import {
-  createAccount,
-  signInWithGoogle,
-} from "../components/Controllers/Firebase";
+// import signInWithGoogle from "../components/Controllers/Firebase"
+import signInWithGoogle from "../components/Controllers/Firebase/GmailLogin";
+
+
 
 const page = () => {
   interface CreateAccountProps {
@@ -62,7 +62,7 @@ const page = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     const user = await signInWithGoogle();
-    document.cookie = `session_auth=${user}`;
+    document.cookie = `session_auth=${user["email"]}`;
     setAuthentication(true);
     router.push("/");
     // if (user) {
