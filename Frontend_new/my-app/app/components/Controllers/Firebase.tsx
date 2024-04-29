@@ -60,7 +60,6 @@ export const uploadToRealtimeDatabase = async ({ formData, tableName }: UploadTo
   try {
     // Wait for all file uploads to complete
     await Promise.all(fileUploadPromises);
-    console.log('idk: ', dataToPush)
 
     const datapush = {
       title: dataToPush["landslideName"],
@@ -68,13 +67,16 @@ export const uploadToRealtimeDatabase = async ({ formData, tableName }: UploadTo
       images: dataToPush["images"],
       landslide_size: dataToPush["size"],
       polygons: dataToPush["geoJSON"],
-      details: dataToPush["casualties"]
+      details: dataToPush["casualties"],
+      email: dataToPush["email"],
+
     }
-    
+    // console.log('idk: ', dataToPush["images"])
+
     // Push the updated data to Firebase Realtime Database
-    const newPostRef = push(ref(db, tableName), datapush);
-    console.log('Data pushed to Realtime Database with ID:', newPostRef.key);
-    return newPostRef.key; // Return the key of the newly added data
+    // const newPostRef = push(ref(db, tableName), datapush);
+    // console.log('Data pushed to Realtime Database with ID:', newPostRef.key);
+    return datapush; // Return the key of the newly added data
   } catch (error) {
     console.error('Error adding data to Realtime Database:', error);
     return null;
