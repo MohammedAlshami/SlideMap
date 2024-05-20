@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import HomePage from "@/components/Map/Map";
 import Sidebar from "@/components/Map/items/Sidebar";
-
+import Navbar from "../components/Navbar";
 // Define the LoadingModal component
 const LoadingModal = () => {
   return (
@@ -81,6 +81,7 @@ const Page = () => {
   // Render the page
   return (
     <>
+
       <dialog id="my_modal_1" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg text-center">

@@ -190,7 +190,7 @@ const Navbar = () => {
                 <div className="w-10 rounded-full">
                   <img
                     alt="Tailwind CSS Navbar component"
-                    src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    src="/assets/profilePIC.avif"
                   />
                 </div>
               </div>
@@ -201,11 +201,10 @@ const Navbar = () => {
                 <li>
                   <a className="justify-between" href="/profile">
                     Profile
-                    <span className="badge">New</span>
                   </a>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <a href="/profile/reports">Reports Made</a>
                 </li>
                 <li onClick={handleLogout}>
                   <a>Logout</a>

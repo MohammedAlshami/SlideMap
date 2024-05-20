@@ -9,6 +9,7 @@ const Article = () => {
 
   const [article, setArticle] = useState(null);
   const search = searchParams.get("index");
+  
   const [fetchComplete, setFetchComplete] = useState(false);
 
 

@@ -1,8 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import ProfileLayout from "../../components/ProfileLayout/ProfileLayout";
-
+import MainLayout from '@/app/components/MainLayout';
 const Page = () => {
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
@@ -38,16 +37,17 @@ const Page = () => {
   }, []);
 
   if (error) {
-    return <ProfileLayout><p>Error: {error}</p></ProfileLayout>;
+    return <MainLayout><p>Error: {error}</p></MainLayout>;
   }
 
   if (isLoading) {
-    return <ProfileLayout><p>Loading...</p></ProfileLayout>;
+    return <MainLayout><p>Loading...</p></MainLayout>;
   }
 
   return (
-    <ProfileLayout>
+    <MainLayout>
       <div className="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <h2 className='pt-24 text-3xl'>Reports Made By You</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {data.length > 0 ? data.map((news, index) => (
             <a
@@ -78,10 +78,10 @@ const Page = () => {
                 </p>
               </div>
             </a>
-          )) : <p>No data available.</p>}
+          )) : <p className='pt-12'>You haven't made any reports</p>}
         </div>
       </div>
-    </ProfileLayout>
+    </MainLayout>
   );
 }
 
