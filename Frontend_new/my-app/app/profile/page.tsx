@@ -2,6 +2,7 @@
 // import React from 'react'
 import ProfileLayout from "../components/ProfileLayout/ProfileLayout";
 import Footer1 from "../components/Footers/Footer1";
+import MainLayout from "../components/MainLayout";
 // const page = () => {
 //   return (
 //     <ProfileLayout>
@@ -70,16 +71,13 @@ const page = () => {
     // Place your API call here to submit your payload.
   };
   return (
-    <ProfileLayout>
-      <form id="login" onSubmit={handleSubmit}>
+    <MainLayout>
+      <form id="login" onSubmit={handleSubmit} className="px-24 py-12">
         <div className="dark:bg-gray-800 ">
           <div className="container mx-auto  dark:bg-gray-800 rounded">
             <div className="xl:w-full dark:border-gray-700 py-5 dark:bg-gray-800">
               <div className="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center">
-                <p className="text-lg text-gray-800 dark:text-gray-100 font-bold">
-                  Profile
-                </p>
-          
+              
               </div>
             </div>
             <div className="mx-auto">
@@ -204,13 +202,13 @@ const page = () => {
                   </div>
                  
                 </div>
-                <Footer1></Footer1>
+            
               </div>
             </div>
           </div>
         </div>
       </form>
-    </ProfileLayout>
+    </MainLayout>
   );
 };
 export default page;

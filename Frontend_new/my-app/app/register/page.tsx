@@ -16,8 +16,10 @@ const page = () => {
   }
 
   const [email, setEmail] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const [error, setError] = useState("");
   const [isAuthenticated, setAuthentication] = useState(false);
@@ -36,20 +38,42 @@ const page = () => {
     }
   }, []);
 
+  const validatePassword = () => {
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.");
+      return false;
+    }
+    if (
+      password.length <= 8 ||
+      !/[A-Z]/.test(password) ||
+      !/[0-9]/.test(password)
+    ) {
+      setError(
+        "Password must be longer than 8 characters, has one upper case letter and at least a number"
+      );
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!validatePassword()) {
+      return;
+    }
     try {
       const response = await fetch("http://127.0.0.1:5000/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password, firstName, lastName }),
       });
 
       if (!response.ok) {
-        setError("An error occurred while creating the account.");
+        setError("Email already exist. Perhaps login to your account?");
         return;
       }
 
@@ -61,8 +85,6 @@ const page = () => {
       } else {
         setError(data.error);
       }
-
- 
     } catch (error) {
       console.error("Error creating account:", error);
       setError("An error occurred while creating the account.");
@@ -71,12 +93,33 @@ const page = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     const user = await signInWithGoogle();
-    document.cookie = `session_auth=${user["email"]}`;
-    setAuthentication(true);
-    router.push("/");
-    // if (user) {
+    console.log(user);
+    try {
+      const response = await fetch("http://127.0.0.1:5000/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ "isGoogle": true, "displayName": user["displayName"], "email": user["email"] }),
+      });
 
-    // }
+      if (!response.ok) {
+        setError("Email already exist. Perhaps login to your account?");
+        return;
+      }
+
+      const data = await response.json();
+      if (data.authenticated) {
+        document.cookie = `session_auth=${email}; path=/`;
+        setAuthentication(true);
+        router.push("/");
+      } else {
+        setError(data.error);
+      }
+    } catch (error) {
+      console.error("Error creating account:", error);
+      setError("An error occurred while creating the account.");
+    }
   };
   return (
     <>
@@ -86,7 +129,7 @@ const page = () => {
             <h1 className="text-4xl font-semibold text-center text-gray-900">
               Register
             </h1>
-            {error && <p className="text-red-500">{error}</p>}
+
             <div className="pb-6 space-y-2 border-b border-gray-200">
               <a
                 href="#"
@@ -105,21 +148,38 @@ const page = () => {
                 </svg>
                 Continue with Google
               </a>
-              <a href="#" className="w-full py-3 btn btn-icon btn-dark">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="mr-1"
-                >
-                  <path d="M19.665,16.811c-0.287,0.664-0.627,1.275-1.021,1.837c-0.537,0.767-0.978,1.297-1.316,1.592	c-0.525,0.482-1.089,0.73-1.692,0.744c-0.432,0-0.954-0.123-1.562-0.373c-0.61-0.249-1.17-0.371-1.683-0.371	c-0.537,0-1.113,0.122-1.73,0.371c-0.616,0.25-1.114,0.381-1.495,0.393c-0.577,0.025-1.154-0.229-1.729-0.764	c-0.367-0.32-0.826-0.87-1.377-1.648c-0.59-0.829-1.075-1.794-1.455-2.891c-0.407-1.187-0.611-2.335-0.611-3.447	c0-1.273,0.275-2.372,0.826-3.292c0.434-0.74,1.01-1.323,1.73-1.751C7.271,6.782,8.051,6.563,8.89,6.549	c0.46,0,1.063,0.142,1.81,0.422s1.227,0.422,1.436,0.422c0.158,0,0.689-0.167,1.593-0.498c0.853-0.307,1.573-0.434,2.163-0.384	c1.6,0.129,2.801,0.759,3.6,1.895c-1.43,0.867-2.137,2.08-2.123,3.637c0.012,1.213,0.453,2.222,1.317,3.023	c0.392,0.372,0.829,0.659,1.315,0.863C19.895,16.236,19.783,16.529,19.665,16.811L19.665,16.811z M15.998,2.38	c0,0.95-0.348,1.838-1.039,2.659c-0.836,0.976-1.846,1.541-2.941,1.452c-0.014-0.114-0.021-0.234-0.021-0.36	c0-0.913,0.396-1.889,1.103-2.688c0.352-0.404,0.8-0.741,1.343-1.009c0.542-0.264,1.054-0.41,1.536-0.435	C15.992,2.127,15.998,2.254,15.998,2.38L15.998,2.38z" />
-                </svg>
-                Continue with Facebook
-              </a>
+             
             </div>
             <form className="space-y-4" onSubmit={handleSubmit}>
+              <label className="block w-full">
+                <span className="block mb-1 text-md font-medium text-gray-700">
+                  First Name
+                </span>
+                <input
+                  className="form-input w-full px-2 py-4 rounded-lg border-gray-200 border-2"
+                  type="text"
+                  placeholder="Ex. Mohammed"
+                  inputMode="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  required
+                />
+              </label>
+              <label className="block w-full">
+                <span className="block mb-1 text-md font-medium text-gray-700">
+                  Last Name
+                </span>
+                <input
+                  className="form-input w-full px-2 py-4 rounded-lg border-gray-200 border-2"
+                  type="text"
+                  placeholder="Ex. Alshami"
+                  inputMode="text"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  required
+                />
+              </label>
+
               <label className="block w-full">
                 <span className="block mb-1 text-md font-medium text-gray-700">
                   Email
@@ -162,23 +222,40 @@ const page = () => {
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </label>
+              {error && <p className="text-red-500">{error}</p>}
               <input
                 type="submit"
                 className="w-full btn btn-primary btn-lg"
-                value="Sign In"
+                value="Sign Up"
               />
             </form>
             <p className="my-8 text-xs font-medium text-center text-gray-700">
               By clicking "Sign Up" you agree to our
-              <a href="#" className="text-purple-700 hover:text-purple-900">
-                Terms of Service
+              <a
+                className="pl-1 text-purple-700 hover:text-purple-900"
+                href="#my_modal_8"
+              >
+                Terms of Service and Privacy Policy
               </a>
-              and
-              <a href="#" className="text-purple-700 hover:text-purple-900">
-                Privacy Policy
-              </a>
-              .
             </p>
+          </div>
+          <div className="modal" role="dialog" id="my_modal_8">
+            <div className="modal-box">
+              <h3 className="font-bold text-lg">Terms and Conditions</h3>
+              <p className="py-4 h-64 overflow-y-scroll">
+                This privacy policy ("Policy") describes how Tailwind Labs Inc.
+                ("Tailwind", "we", "us" or "our") collects, protects and uses
+                the personally identifiable information ("Personal Information")
+                you ("User", "you" or "your") may provide through the Tailwind
+                UI website (tailwindui.com) or in the course of purchasing any
+                Tailwind UI products (collectively,)
+              </p>
+              <div className="modal-action">
+                <a href="#" className="btn">
+                  Close!
+                </a>
+              </div>
+            </div>
           </div>
         </section>
       </MainLayout>
