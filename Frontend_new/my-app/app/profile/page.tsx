@@ -1,208 +1,249 @@
 "use client";
-// import React from 'react'
 import ProfileLayout from "../components/ProfileLayout/ProfileLayout";
 import Footer1 from "../components/Footers/Footer1";
 import MainLayout from "../components/MainLayout";
-// const page = () => {
-//   return (
-//     <ProfileLayout>
 
-// {/* <div className="bg-white border border-4 rounded-lg shadow relative m-10">
+import React, { useEffect, useState } from "react";
 
-// <div className="flex items-start justify-between p-5 border-b rounded-t">
-//     <h3 className="text-xl font-semibold">
-//         Edit product
-//     </h3>
-//     <button type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center" data-modal-toggle="product-modal">
-//        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-//     </button>
-// </div>
-
-// <div className="p-6 space-y-6">
-//     <form action="#">
-//         <div className="grid grid-cols-6 gap-6">
-//             <div className="col-span-6 sm:col-span-3">
-//                 <label htmlFor="product-name" className="text-sm font-medium text-gray-900 block mb-2">Product Name</label>
-//                 <input type="text" name="product-name" id="product-name" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Apple Imac 27”" required={false} />
-//             </div>
-//             <div className="col-span-6 sm:col-span-3">
-//                 <label htmlFor="category" className="text-sm font-medium text-gray-900 block mb-2">Category</label>
-//                 <input type="text" name="category" id="category" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Electronics" required={false} />
-//             </div>
-//             <div className="col-span-6 sm:col-span-3">
-//                 <label htmlFor="brand" className="text-sm font-medium text-gray-900 block mb-2">Brand</label>
-//                 <input type="text" name="brand" id="brand" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="Apple" required={false} />
-//             </div>
-//             <div className="col-span-6 sm:col-span-3">
-//                 <label htmlFor="price" className="text-sm font-medium text-gray-900 block mb-2">Price</label>
-//                 <input type="number" name="price" id="price" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" placeholder="$2300" required={false} />
-//             </div>
-//             <div className="col-span-full">
-//                 <label htmlFor="product-details" className="text-sm font-medium text-gray-900 block mb-2">Product Details</label>
-//                 <textarea id="product-details" rows={6} className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4" placeholder="Details"></textarea>
-//             </div>
-//         </div>
-//     </form>
-// </div>
-
-// <div className="p-6 border-t border-gray-200 rounded-b">
-//     <button className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Save all</button>
-// </div>
-
-// </div> */}
-
-//     </ProfileLayout>
-//   )
-// }
-
-// export default page
-
-import React, { useRef } from "react";
 const page = () => {
-  let form = useRef(null);
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const form_data = new FormData(form.current);
-    let payload = {};
-    form_data.forEach(function (value, key) {
-      payload[key] = value;
-    });
-    // console.log("payload", payload);
-    // Place your API call here to submit your payload.
+  const sessionCookie = document.cookie.split('; ').find(row => row.startsWith('session_auth='));
+  const sessionValue = sessionCookie ? sessionCookie.split('=')[1] : '';
+  const [isEditing, setIsEditing] = useState(false);
+  
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    oldPassword: "", // Add a new state for old password
+    newPassword: "", // Add a new state for new password
+  });
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const dummyUserId = sessionValue; // Replace with the actual user ID
+        const response = await fetch("http://127.0.0.1:5000/get-profile", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId: dummyUserId }),
+        });
+        const data = await response.json();
+        setFormData(data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
+
+    fetchUserProfile();
+  }, []);
+
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const handleEditClick = () => {
+    setIsEditing(true);
+    setFormData((prevState) => ({
+      ...prevState,
+      oldPassword: prevState.password,
+      newPassword: "",
+    }));
+  };
+
+  const handleCancelClick = () => {
+    setIsEditing(false);
+    setFormData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "dummy_password", // Reset the password to an empty string
+      oldPassword: "", // Reset the oldPassword to an empty string
+      newPassword: "", // Reset the newPassword to an empty string
+    });
+  };
+
+  const handleSaveChanges = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:5000/edit-profile", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      console.log(data);
+      setIsEditing(false);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <MainLayout>
-      <form id="login" onSubmit={handleSubmit} className="px-24 py-12">
+      <form id="login" className="px-24 py-12">
         <div className="dark:bg-gray-800 ">
           <div className="container mx-auto  dark:bg-gray-800 rounded">
             <div className="xl:w-full dark:border-gray-700 py-5 dark:bg-gray-800">
-              <div className="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center">
-              
-              </div>
+              <div className="flex w-11/12 mx-auto xl:w-full xl:mx-0 items-center"></div>
             </div>
             <div className="mx-auto">
               <div className=" w-full mx-auto xl:mx-0">
-             
-
                 <div className="bg-white border border-4 rounded-lg shadow relative my-12 ">
                   <div className="flex items-start justify-between p-5 border-b rounded-t">
-                    <h3 className="text-xl font-semibold">Edit product</h3>
-                    <button
-                      type="button"
-                      className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
-                      data-modal-toggle="product-modal"
-                    >
-                      <svg
-                        className="w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                          clip-rule="evenodd"
-                        ></path>
-                      </svg>
-                    </button>
+                    <h3 className="text-xl font-semibold">Edit Profile</h3>
                   </div>
 
                   <div className="p-6 space-y-6">
-                    <form action="#">
-                      <div className="grid grid-cols-6 gap-6">
-                        <div className="col-span-6 sm:col-span-3">
-                          <label
-                            htmlFor="product-name"
-                            className="text-sm font-medium text-gray-900 block mb-2"
-                          >
-                            Product Name
-                          </label>
-                          <input
-                            type="text"
-                            name="product-name"
-                            id="product-name"
-                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                            placeholder="Apple Imac 27”"
-                            required={false}
-                          />
-                        </div>
-                        <div className="col-span-6 sm:col-span-3">
-                          <label
-                            htmlFor="category"
-                            className="text-sm font-medium text-gray-900 block mb-2"
-                          >
-                            Category
-                          </label>
-                          <input
-                            type="text"
-                            name="category"
-                            id="category"
-                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                            placeholder="Electronics"
-                            required={false}
-                          />
-                        </div>
-                        <div className="col-span-6 sm:col-span-3">
-                          <label
-                            htmlFor="brand"
-                            className="text-sm font-medium text-gray-900 block mb-2"
-                          >
-                            Brand
-                          </label>
-                          <input
-                            type="text"
-                            name="brand"
-                            id="brand"
-                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                            placeholder="Apple"
-                            required={false}
-                          />
-                        </div>
-                        <div className="col-span-6 sm:col-span-3">
-                          <label
-                            htmlFor="price"
-                            className="text-sm font-medium text-gray-900 block mb-2"
-                          >
-                            Price
-                          </label>
-                          <input
-                            type="number"
-                            name="price"
-                            id="price"
-                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                            placeholder="$2300"
-                            required={false}
-                          />
-                        </div>
-                        <div className="col-span-full">
-                          <label
-                            htmlFor="product-details"
-                            className="text-sm font-medium text-gray-900 block mb-2"
-                          >
-                            Product Details
-                          </label>
-                          <textarea
-                            id="product-details"
-                            rows={6}
-                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4"
-                            placeholder="Details"
-                          ></textarea>
-                        </div>
+                    <div className="grid grid-cols-6 gap-6">
+                      <div className="col-span-6 sm:col-span-3">
+                        <label
+                          htmlFor="firstName"
+                          className="text-sm font-medium text-gray-900 block mb-2"
+                        >
+                          First Name
+                        </label>
+                        <input
+                          type="text"
+                          name="firstName"
+                          id="firstName"
+                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                          placeholder="First Name"
+                          value={formData.firstName}
+                          onChange={handleInputChange}
+                          disabled={!isEditing}
+                        />
                       </div>
-                    </form>
+                      <div className="col-span-6 sm:col-span-3">
+                        <label
+                          htmlFor="lastName"
+                          className="text-sm font-medium text-gray-900 block mb-2"
+                        >
+                          Last Name
+                        </label>
+                        <input
+                          type="text"
+                          name="lastName"
+                          id="lastName"
+                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                          placeholder="Last Name"
+                          value={formData.lastName}
+                          onChange={handleInputChange}
+                          disabled={!isEditing}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3">
+                        <label
+                          htmlFor="email"
+                          className="text-sm font-medium text-gray-900 block mb-2"
+                        >
+                          Email
+                        </label>
+                        <input
+                          type="text"
+                          name="email"
+                          id="email"
+                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                          placeholder="Email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          disabled={true}
+                        />
+                      </div>
+                      <div className="col-span-6 sm:col-span-3 space-y-6">
+                        {isEditing ? (
+                          <>
+                            <div className="col-span-6 sm:col-span-3">
+                              <label
+                                htmlFor="oldPassword"
+                                className="text-sm font-medium text-gray-900 block mb-2"
+                              >
+                                Old Password
+                              </label>
+                              <input
+                                type="password"
+                                name="oldPassword"
+                                id="oldPassword"
+                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                placeholder="Old Password"
+                                value={formData.oldPassword}
+                                onChange={handleInputChange}
+                                disabled={!isEditing}
+                              />
+                            </div>
+                            <div className="col-span-6 sm:col-span-3">
+                              <label
+                                htmlFor="newPassword"
+                                className="text-sm font-medium text-gray-900 block mb-2"
+                              >
+                                New Password
+                              </label>
+                              <input
+                                type="password"
+                                name="newPassword"
+                                id="newPassword"
+                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                                placeholder="New Password"
+                                value={formData.newPassword}
+                                onChange={handleInputChange}
+                              />
+                            </div>
+                          </>
+                        ) : (
+                          <div className="col-span-6 sm:col-span-3">
+                            <label
+                              htmlFor="password"
+                              className="text-sm font-medium text-gray-900 block mb-2"
+                            >
+                              Password
+                            </label>
+                            <input
+                              type="password"
+                              name="password"
+                              id="password"
+                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
+                              placeholder="Password"
+                              value={formData.password}
+                              onChange={handleInputChange}
+                              disabled={!isEditing}
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </div>
 
                   <div className="p-6 border-t border-gray-200 rounded-b">
-                    <button
-                      className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                      type="submit"
-                    >
-                      Save all
-                    </button>
+                    {isEditing ? (
+                      <>
+                        <button
+                          className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2"
+                          type="button"
+                          onClick={handleSaveChanges}
+                        >
+                          Save Changes
+                        </button>
+                        <button
+                          className="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
+                          type="button"
+                          onClick={handleCancelClick}
+                        >
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        className="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                        type="button"
+                        onClick={handleEditClick}
+                      >
+                        Edit
+                      </button>
+                    )}
                   </div>
-                 
                 </div>
-            
               </div>
             </div>
           </div>

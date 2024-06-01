@@ -10,8 +10,7 @@ import dynamic from "next/dynamic";
 //   loading: () => <p className="text-4xl text-black bg-red-600 w-96 h-96">Loadinsssssssg...</p>,
 // })
 
-import PaginationComponent from "../components/paginationComponent";
-
+import PaginationComponentReports from "../components/paginationComponentReports";
 // const DynamicHeader = dynamic(() => import('../components/News/News'), {
 //   loading: () => <p className="text-4xl text-black bg-red-600 w-96 h-96">Loadinsssssssg...</p>,
 // })
@@ -85,7 +84,7 @@ export const Blog = () => {
                         htmlFor="hs-search-article-1"
                         className="block text-sm text-gray-700 font-medium dark:text-white"
                       >
-                        <span className="sr-only">Search article</span>
+                        <span className="sr-only">Search Reports</span>
                       </label>
                       <input
                         type="text"
@@ -182,7 +181,7 @@ export const Blog = () => {
                 >
                   <div className="aspect-w-16 aspect-h-11">
                     <img
-                      className="w-full object-cover rounded-xl"
+                      className="w-full object-cover rounded-xl  h-64"
                       src={
                         news.images && news.images.length > 0
                           ? news.images[0]
@@ -196,12 +195,12 @@ export const Blog = () => {
                       <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:group-hover:text-white">
                         {news.title}
                       </h3>
-                      <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-300 dark:group-hover:text-white">
-                        {news.size}kmsq
+                      <h3 className="text-md font-semibold text-gray-800 dark:text-gray-300 dark:group-hover:text-white">
+                        {news.size} kmsq
                       </h3>
                     </div>
                     <p className="mt-5 text-gray-600 dark:text-gray-400">
-                      {news.details}
+                    {news.details.substring(0, 100)}...
                     </p>
                   </div>
                 </a>
@@ -209,7 +208,7 @@ export const Blog = () => {
             </>
           </div>
           <div className="pt-12">
-            <PaginationComponent currentPage={currentPage} totalPages={totalPages} />
+            <PaginationComponentReports currentPage={currentPage} totalPages={totalPages} />
           </div>
         </div>
       </MainLayout>

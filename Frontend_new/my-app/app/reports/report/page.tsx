@@ -189,7 +189,7 @@ const Article = () => {
                 </circle>
               </svg>
               <br />
-              Thank You For Beeing Patient
+              Thank You For Being Patient
             </p>
           </div>
         </dialog>
@@ -210,17 +210,28 @@ const Article = () => {
                   </h2>
 
                   <div className="carousel rounded-box h-96">
-                    {article.images && article.images.map((imageUrl, index) => (
-                      <div key={index} className="carousel-item">
-                        <img src={imageUrl} alt="Burger" className="w-full" />
-                      </div>
-                    ))}
+                    {article.images &&
+                      article.images.map((imageUrl, index) => (
+                        <div
+                          key={index}
+                          className="carousel-item w-[800px] object-fit"
+                        >
+                          <img
+                            src={imageUrl}
+                            alt="Burger"
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ))}
                   </div>
                 </div>
 
                 <div className="mt-4">
-                  <a className="text-md font-bold md:text-lg underline dark:text-white pt-8 pb-8" href={article.poly_path}>
-                  Click To Download Polygons 
+                  <a
+                    className="text-md font-bold md:text-lg underline dark:text-white pt-8 pb-8"
+                    href={article.poly_path}
+                  >
+                    Click To Download Polygons
                   </a>
                 </div>
               </div>

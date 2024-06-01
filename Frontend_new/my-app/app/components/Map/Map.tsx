@@ -103,7 +103,7 @@ const MapPage = ({ onCreate }) => {
           center={center}
           zoom={13}
           scrollWheelZoom={true}
-          className="h-96 md:h-[600px] w-screen sm:w-[100vh] lg:w-[120vh] xl:w-[80vh]"
+          className="h-96 md:h-[650px] w-screen sm:w-[100vh] lg:w-[120vh] xl:w-[80vh]"
         >
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
