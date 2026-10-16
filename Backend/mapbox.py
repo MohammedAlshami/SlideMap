@@ -1,7 +1,8 @@
+import os
 import requests
 
 # Mapbox API key
-mapbox_api_key = "process.env.MAPBOX_TOKEN || """
+mapbox_api_key = os.environ.get("MAPBOX_TOKEN", "")
 
 # Example search query
 search_query = "Bali, Batang Kali"

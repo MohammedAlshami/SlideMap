@@ -1,3 +1,4 @@
+import os
 import requests
 import json
 import subprocess
@@ -54,7 +55,7 @@ crawled_data_sample = {
 
 def mapbox_search(location, coordinates=None):
     # Mapbox API key
-    mapbox_api_key = "process.env.MAPBOX_TOKEN || """
+    mapbox_api_key = os.environ.get("MAPBOX_TOKEN", "")
 
     # Mapbox Search API endpoint
     api_endpoint = f"https://api.mapbox.com/geocoding/v5/mapbox.places/{location}.json"
@@ -91,7 +92,7 @@ print(result)
 
 from openai import OpenAI
 
-client = OpenAI(api_key="os.environ.get("OPENAI_API_KEY","")")
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
 
 gpt_model = "gpt-3.5-turbo-16k"
 gpt_role_prompt = """Given the Mapbox search data and news data, cross-check the information to estimate the likely location of the landslide.

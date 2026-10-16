@@ -110,7 +110,7 @@ export default function Home() {
               <div className="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
                 <img
                   className="w-full h-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
-                  src="https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/pin-s+9ed4bd(3.4601368,101.6550138)/101.6550138,3.4601368,14,0,0/800x600?access_token=process.env.MAPBOX_TOKEN || """
+                  src="https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/pin-s+9ed4bd(3.4601368,101.6550138)/101.6550138,3.4601368,14,0,0/800x600?access_token=process.env.MAPBOX_TOKEN || ''"
                   alt="Image Description"
                 />
                 <span className="absolute top-0 end-0 rounded-se-xl rounded-es-xl text-xs font-medium bg-gray-800 text-white py-1.5 px-3 dark:bg-gray-900">
@@ -154,7 +154,7 @@ export default function Home() {
               <div className="relative pt-[50%] sm:pt-[70%] rounded-xl overflow-hidden">
                 <img
                   className="w-full h-full absolute top-0 start-0 object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out rounded-xl"
-                  src="https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/pin-s+9ed4bd(3.1319197,101.6840589)/101.6840589,3.1319197,14,0,0/800x600?access_token=process.env.MAPBOX_TOKEN || """
+                  src="https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/pin-s+9ed4bd(3.1319197,101.6840589)/101.6840589,3.1319197,14,0,0/800x600?access_token=process.env.MAPBOX_TOKEN || ''"
                   alt="Image Description"
                 />
               </div>

@@ -180,7 +180,7 @@ const Map = () => {
     //   >
     //     <TileLayer
     //       attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-    //       url="https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/512/{z}/{x}/{y}?access_token=process.env.MAPBOX_TOKEN || """
+    //       url="https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/512/{z}/{x}/{y}?access_token=process.env.NEXT_PUBLIC_MAPBOX_TOKEN || """
     //     />
     //     {/* Render GeoJSON layer if data is available */}
     //     {geojsonData && <GeoJSON data={geojsonData} />}

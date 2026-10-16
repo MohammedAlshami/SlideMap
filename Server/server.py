@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify, request
 import requests
 from flask_cors import CORS
@@ -7,14 +8,14 @@ import difflib
 from FirebaseDB import FirebaseDB
 import pyrebase
 firebaseConfig = {
-  "apiKey": "os.environ.get("FIREBASE_API_KEY","")",
-  "authDomain": "os.environ.get("FIREBASE_AUTH_DOMAIN","")",
+  "apiKey": os.environ.get("FIREBASE_API_KEY", ""),
+  "authDomain": os.environ.get("FIREBASE_AUTH_DOMAIN",""),
   "databaseURL":
-    "os.environ.get("FIREBASE_DB_URL","")",
-  "projectId": "realtimedatabasetest-f226a",
-  "storageBucket": "os.environ.get("FIREBASE_STORAGE_BUCKET","")",
-  "messagingSenderId": "348704796176",
-  "appId": "1:348704796176:web:38994c5ab4d54b752ce495",
+    os.environ.get("FIREBASE_DB_URL",""),
+  "projectId": os.environ.get("FIREBASE_PROJECT_ID",""),
+  "storageBucket": os.environ.get("FIREBASE_STORAGE_BUCKET",""),
+  "messagingSenderId": os.environ.get("FIREBASE_MESSAGING_SENDER_ID",""),
+  "appId": os.environ.get("FIREBASE_APP_ID",""),
 }
 
 firebase = pyrebase.initialize_app(firebaseConfig)

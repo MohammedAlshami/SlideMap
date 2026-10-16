@@ -26,14 +26,14 @@ def create_geojson(features):
 class FirebaseDB:
     def __init__(self):
         self.firebase_config = {
-   "apiKey": "os.environ.get("FIREBASE_API_KEY","")",
-  "authDomain": "os.environ.get("FIREBASE_AUTH_DOMAIN","")",
+   "apiKey": os.environ.get("FIREBASE_API_KEY", ""),
+  "authDomain": os.environ.get("FIREBASE_AUTH_DOMAIN",""),
   "databaseURL":
-    "os.environ.get("FIREBASE_DB_URL","")",
-  "projectId": "realtimedatabasetest-f226a",
-  "storageBucket": "os.environ.get("FIREBASE_STORAGE_BUCKET","")",
-  "messagingSenderId": "348704796176",
-  "appId": "1:348704796176:web:38994c5ab4d54b752ce495",
+    os.environ.get("FIREBASE_DB_URL",""),
+  "projectId": os.environ.get("FIREBASE_PROJECT_ID",""),
+  "storageBucket": os.environ.get("FIREBASE_STORAGE_BUCKET",""),
+  "messagingSenderId": os.environ.get("FIREBASE_MESSAGING_SENDER_ID",""),
+  "appId": os.environ.get("FIREBASE_APP_ID",""),
         }
         self.firebase = pyrebase.initialize_app(self.firebase_config)
         self.auth = self.firebase.auth()

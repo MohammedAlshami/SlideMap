@@ -340,7 +340,7 @@ export const Blog = () => {
                   <div className="aspect-w-16 aspect-h-11">
                     <img
                       className="w-full object-cover rounded-xl"
-                      src={`https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/pin-s+9ed4bd(${news.lat},${news.lon})/${news.lon},${news.lat},14,0,0/800x600?access_token=process.env.MAPBOX_TOKEN || ""`}
+                      src={`https://api.mapbox.com/styles/v1/mapbox/satellite-v9/static/pin-s+9ed4bd(${news.lat},${news.lon})/${news.lon},${news.lat},14,0,0/800x600?access_token=process.env.NEXT_PUBLIC_MAPBOX_TOKEN || ""`}
                       alt="Image Description"
                     />
                   </div>

@@ -76,7 +76,7 @@ def summary_landslide_news(news_content):
     return output
 
 
-def get_coordinates(location_name, access_token="process.env.MAPBOX_TOKEN || """):
+def get_coordinates(location_name, access_token="process.env.MAPBOX_TOKEN || ''"):
 
     """
     Get the coordinates (latitude, longitude) of a location using Mapbox Geocoding API.

@@ -1,3 +1,4 @@
+import os
 from googlesearch import search
 import time
 
@@ -17,7 +18,7 @@ except ImportError:
 
 from openai import OpenAI
 
-client = OpenAI(api_key="os.environ.get("OPENAI_API_KEY","")")
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY", ""))
 
 gpt_model = "gpt-3.5-turbo-16k"
 gpt_role_prompt = """Your job is to extract landslide data as the following:

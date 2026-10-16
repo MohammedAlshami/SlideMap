@@ -48,7 +48,7 @@ def get_coordinates(location_name, access_token):
 # print(f"The centroid of the given locations is: {centroid}")
 
 location_name = "Batang Kali, Malaysia"
-access_token = "process.env.MAPBOX_TOKEN || """
+access_token = "process.env.MAPBOX_TOKEN || ''"
 
 locations = ["batang kali, malaysia", "genting highland, malaysia"]
 locations =  [get_coordinates(location, access_token) for location in locations]
